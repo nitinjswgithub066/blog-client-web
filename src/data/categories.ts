@@ -1,0 +1,154 @@
+// =============================================================================
+// VexiraHub — Category Data
+// All platform categories. UI only shows categories that have posts.
+// Icons: React Icons (react-icons/fi = Feather Icons)
+// =============================================================================
+
+import type { Category } from "@/types";
+
+export const categories: Category[] = [
+  {
+    id: "cat-technology",
+    name: "Technology",
+    slug: "technology",
+    description:
+      "Explore the latest breakthroughs in tech — from consumer gadgets to enterprise software shaping the future.",
+    icon: "FiCpu",
+    accentColor: "var(--cat-technology)",
+    coverImage: "https://picsum.photos/seed/technology/1200/600",
+  },
+  {
+    id: "cat-programming",
+    name: "Programming",
+    slug: "programming",
+    description:
+      "Deep-dive tutorials, best practices, and insights for developers of every skill level.",
+    icon: "FiCode",
+    accentColor: "var(--cat-programming)",
+    coverImage: "https://picsum.photos/seed/programming/1200/600",
+  },
+  {
+    id: "cat-web-development",
+    name: "Web Development",
+    slug: "web-development",
+    description:
+      "Frontend, backend, and full-stack — everything you need to build for the modern web.",
+    icon: "FiGlobe",
+    accentColor: "var(--cat-web-dev)",
+    coverImage: "https://picsum.photos/seed/webdev/1200/600",
+  },
+  {
+    id: "cat-ai",
+    name: "AI",
+    slug: "ai",
+    description:
+      "Artificial intelligence, machine learning, LLMs, and the tools redefining what software can do.",
+    icon: "FiZap",
+    accentColor: "var(--cat-ai)",
+    coverImage: "https://picsum.photos/seed/artificialintelligence/1200/600",
+  },
+  {
+    id: "cat-startups",
+    name: "Startups",
+    slug: "startups",
+    description:
+      "Founder stories, funding news, startup culture, and the playbooks behind fast-growing companies.",
+    icon: "FiTrendingUp",
+    accentColor: "var(--cat-startups)",
+    coverImage: "https://picsum.photos/seed/startups/1200/600",
+  },
+  {
+    id: "cat-business",
+    name: "Business",
+    slug: "business",
+    description:
+      "Strategy, leadership, operations, and the thinking that drives successful businesses.",
+    icon: "FiBriefcase",
+    accentColor: "var(--cat-business)",
+    coverImage: "https://picsum.photos/seed/business/1200/600",
+  },
+  {
+    id: "cat-finance",
+    name: "Finance",
+    slug: "finance",
+    description:
+      "Personal finance, investing, crypto, markets, and making your money work smarter.",
+    icon: "FiDollarSign",
+    accentColor: "var(--cat-finance)",
+    coverImage: "https://picsum.photos/seed/finance/1200/600",
+  },
+  {
+    id: "cat-education",
+    name: "Education",
+    slug: "education",
+    description:
+      "Learning strategies, courses, certifications, and resources to accelerate your knowledge.",
+    icon: "FiBook",
+    accentColor: "var(--cat-education)",
+    coverImage: "https://picsum.photos/seed/education/1200/600",
+  },
+  {
+    id: "cat-career",
+    name: "Career",
+    slug: "career",
+    description:
+      "Job hunting, interviews, remote work, freelancing, and building a career you love.",
+    icon: "FiAward",
+    accentColor: "var(--cat-career)",
+    coverImage: "https://picsum.photos/seed/career/1200/600",
+  },
+  {
+    id: "cat-gaming",
+    name: "Gaming",
+    slug: "gaming",
+    description:
+      "Game reviews, industry news, esports, and the culture behind the world's biggest entertainment medium.",
+    icon: "FiMonitor",
+    accentColor: "var(--cat-gaming)",
+    coverImage: "https://picsum.photos/seed/gaming/1200/600",
+  },
+  {
+    id: "cat-entertainment",
+    name: "Entertainment",
+    slug: "entertainment",
+    description:
+      "Movies, music, streaming, pop culture, and everything that keeps you entertained.",
+    icon: "FiFilm",
+    accentColor: "var(--cat-entertainment)",
+    coverImage: "https://picsum.photos/seed/entertainment/1200/600",
+  },
+  {
+    id: "cat-reviews",
+    name: "Reviews",
+    slug: "reviews",
+    description:
+      "Honest, in-depth reviews of the tools, products, and services that matter to creators and professionals.",
+    icon: "FiStar",
+    accentColor: "var(--cat-reviews)",
+    coverImage: "https://picsum.photos/seed/reviews/1200/600",
+  },
+  {
+    id: "cat-thoughts",
+    name: "Thoughts",
+    slug: "thoughts",
+    description:
+      "Personal essays, opinions, observations, and reflections on life, work, and the world.",
+    icon: "FiFeather",
+    accentColor: "var(--cat-thoughts)",
+    coverImage: "https://picsum.photos/seed/thoughts/1200/600",
+  },
+];
+
+// -----------------------------------------------------------------------------
+// Lookup helpers
+// -----------------------------------------------------------------------------
+
+/** Get a category by its slug */
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return categories.find((c) => c.slug === slug);
+}
+
+/** Get a category by its id */
+export function getCategoryById(id: string): Category | undefined {
+  return categories.find((c) => c.id === id);
+}
