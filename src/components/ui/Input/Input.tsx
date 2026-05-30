@@ -40,7 +40,7 @@ export default function Input({
         </label>
       )}
 
-      <div className={cn(styles.inputWrapper, styles[variant], error && styles.hasError)}>
+      <div className={cn(styles.inputWrapper, styles[variant], error && styles.hasError)} suppressHydrationWarning>
         {leftIcon && (
           <span className={styles.leftIcon} aria-hidden="true">
             {leftIcon}

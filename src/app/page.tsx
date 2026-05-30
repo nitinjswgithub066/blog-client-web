@@ -18,7 +18,6 @@ export default function HomePage() {
       <TrendingSection />
       <CategorySection />
       <LatestPostsSection limit={6} showSidebar />
-      <NewsletterSection />
     </>
   );
 }
