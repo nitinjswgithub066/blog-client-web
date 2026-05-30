@@ -1209,9 +1209,10 @@ export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
-/** Get posts by category slug */
-export function getPostsByCategory(categorySlug: string): Post[] {
-  return allPosts.filter((p) => p.category.slug === categorySlug);
+/** Get posts by category slug with optional limit */
+export function getPostsByCategory(categorySlug: string, limit?: number): Post[] {
+  const filtered = allPosts.filter((p) => p.category.slug === categorySlug);
+  return limit !== undefined ? filtered.slice(0, limit) : filtered;
 }
 
 /** Get related posts (same category, excluding current) */
@@ -1258,8 +1259,3 @@ export function getTrendingPosts(limit = 8): Post[] { return trendingPosts.slice
 /** Get thought posts */
 export function getThoughtPosts(): Post[] { return thoughtsPosts; }
 
-/** Get posts by category slug with optional limit override */
-export function getPostsByCategory(categorySlug: string, limit?: number): Post[] {
-  const filtered = allPosts.filter((p) => p.category.slug === categorySlug);
-  return limit !== undefined ? filtered.slice(0, limit) : filtered;
-}
