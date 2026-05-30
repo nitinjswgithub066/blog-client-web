@@ -1215,13 +1215,12 @@ export function getPostsByCategory(categorySlug: string): Post[] {
 }
 
 /** Get related posts (same category, excluding current) */
-export function getRelatedPosts(slug: string, limit = 3): Post[] {
-  const current = getPostBySlug(slug);
-  if (!current) return [];
+export function getRelatedPosts(postId: string, categorySlug: string, limit = 3): Post[] {
   return allPosts
-    .filter((p) => p.slug !== slug && p.category.id === current.category.id)
+    .filter((p) => p.id !== postId && p.category.slug === categorySlug)
     .slice(0, limit);
 }
+
 
 /** Get categories that have at least one post */
 export function getActiveCategories() {
@@ -1246,4 +1245,21 @@ export function searchPosts(query: string): Post[] {
       p.tags.some((t) => t.name.toLowerCase().includes(q)) ||
       p.author.name.toLowerCase().includes(q)
   );
+}
+/** Get all posts sorted by date */
+export function getAllPosts(): Post[] { return allPosts; }
+
+/** Get featured posts with optional limit */
+export function getFeaturedPosts(limit = 3): Post[] { return featuredPosts.slice(0, limit); }
+
+/** Get trending posts with optional limit */
+export function getTrendingPosts(limit = 8): Post[] { return trendingPosts.slice(0, limit); }
+
+/** Get thought posts */
+export function getThoughtPosts(): Post[] { return thoughtsPosts; }
+
+/** Get posts by category slug with optional limit override */
+export function getPostsByCategory(categorySlug: string, limit?: number): Post[] {
+  const filtered = allPosts.filter((p) => p.category.slug === categorySlug);
+  return limit !== undefined ? filtered.slice(0, limit) : filtered;
 }
