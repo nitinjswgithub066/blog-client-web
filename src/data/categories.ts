@@ -15,7 +15,7 @@ export const categories: Category[] = [
       "Explore the latest breakthroughs in tech — from consumer gadgets to enterprise software shaping the future.",
     icon: "FiCpu",
     accentColor: "var(--cat-technology)",
-    coverImage: "https://picsum.photos/seed/technology/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-programming",
@@ -25,7 +25,7 @@ export const categories: Category[] = [
       "Deep-dive tutorials, best practices, and insights for developers of every skill level.",
     icon: "FiCode",
     accentColor: "var(--cat-programming)",
-    coverImage: "https://picsum.photos/seed/programming/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-web-development",
@@ -35,7 +35,7 @@ export const categories: Category[] = [
       "Frontend, backend, and full-stack — everything you need to build for the modern web.",
     icon: "FiGlobe",
     accentColor: "var(--cat-web-dev)",
-    coverImage: "https://picsum.photos/seed/webdev/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-ai",
@@ -45,7 +45,7 @@ export const categories: Category[] = [
       "Artificial intelligence, machine learning, LLMs, and the tools redefining what software can do.",
     icon: "FiZap",
     accentColor: "var(--cat-ai)",
-    coverImage: "https://picsum.photos/seed/artificialintelligence/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-startups",
@@ -55,7 +55,7 @@ export const categories: Category[] = [
       "Founder stories, funding news, startup culture, and the playbooks behind fast-growing companies.",
     icon: "FiTrendingUp",
     accentColor: "var(--cat-startups)",
-    coverImage: "https://picsum.photos/seed/startups/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-business",
@@ -65,7 +65,7 @@ export const categories: Category[] = [
       "Strategy, leadership, operations, and the thinking that drives successful businesses.",
     icon: "FiBriefcase",
     accentColor: "var(--cat-business)",
-    coverImage: "https://picsum.photos/seed/business/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-finance",
@@ -75,7 +75,7 @@ export const categories: Category[] = [
       "Personal finance, investing, crypto, markets, and making your money work smarter.",
     icon: "FiDollarSign",
     accentColor: "var(--cat-finance)",
-    coverImage: "https://picsum.photos/seed/finance/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-education",
@@ -85,7 +85,7 @@ export const categories: Category[] = [
       "Learning strategies, courses, certifications, and resources to accelerate your knowledge.",
     icon: "FiBook",
     accentColor: "var(--cat-education)",
-    coverImage: "https://picsum.photos/seed/education/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-career",
@@ -95,7 +95,7 @@ export const categories: Category[] = [
       "Job hunting, interviews, remote work, freelancing, and building a career you love.",
     icon: "FiAward",
     accentColor: "var(--cat-career)",
-    coverImage: "https://picsum.photos/seed/career/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-gaming",
@@ -105,7 +105,7 @@ export const categories: Category[] = [
       "Game reviews, industry news, esports, and the culture behind the world's biggest entertainment medium.",
     icon: "FiMonitor",
     accentColor: "var(--cat-gaming)",
-    coverImage: "https://picsum.photos/seed/gaming/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-entertainment",
@@ -115,7 +115,7 @@ export const categories: Category[] = [
       "Movies, music, streaming, pop culture, and everything that keeps you entertained.",
     icon: "FiFilm",
     accentColor: "var(--cat-entertainment)",
-    coverImage: "https://picsum.photos/seed/entertainment/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-reviews",
@@ -125,7 +125,7 @@ export const categories: Category[] = [
       "Honest, in-depth reviews of the tools, products, and services that matter to creators and professionals.",
     icon: "FiStar",
     accentColor: "var(--cat-reviews)",
-    coverImage: "https://picsum.photos/seed/reviews/1200/600",
+    coverImage: "",
   },
   {
     id: "cat-thoughts",
@@ -135,7 +135,7 @@ export const categories: Category[] = [
       "Personal essays, opinions, observations, and reflections on life, work, and the world.",
     icon: "FiFeather",
     accentColor: "var(--cat-thoughts)",
-    coverImage: "https://picsum.photos/seed/thoughts/1200/600",
+    coverImage: "",
   },
 ];
 
