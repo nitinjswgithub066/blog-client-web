@@ -11,7 +11,7 @@ export const authors: Author[] = [
     id: "author-vexira",
     name: "Vexira",
     slug: "vexira",
-    avatar: "https://picsum.photos/seed/vexira-author/200/200",
+    avatar: "",
     bio: "Founder of VexiraHub. I write about technology, AI, programming, and the ideas shaping the future. Building in public, one post at a time.",
     role: "Founder & Editor-in-Chief",
     social: {
@@ -25,7 +25,7 @@ export const authors: Author[] = [
     id: "author-aryan-mehta",
     name: "Aryan Mehta",
     slug: "aryan-mehta",
-    avatar: "https://picsum.photos/seed/aryan-mehta/200/200",
+    avatar: "",
     bio: "Full-stack developer and open-source contributor. Passionate about clean code, web performance, and making the web more accessible.",
     role: "Staff Writer — Programming",
     social: {
@@ -37,7 +37,7 @@ export const authors: Author[] = [
     id: "author-priya-sharma",
     name: "Priya Sharma",
     slug: "priya-sharma",
-    avatar: "https://picsum.photos/seed/priya-sharma/200/200",
+    avatar: "",
     bio: "Startup founder turned writer. I cover the business of tech — fundraising, product strategy, and the human stories behind growing companies.",
     role: "Staff Writer — Startups & Business",
     social: {
@@ -49,7 +49,7 @@ export const authors: Author[] = [
     id: "author-rohan-das",
     name: "Rohan Das",
     slug: "rohan-das",
-    avatar: "https://picsum.photos/seed/rohan-das/200/200",
+    avatar: "",
     bio: "Finance enthusiast, crypto observer, and personal finance advocate. I help people make sense of money in the digital age.",
     role: "Staff Writer — Finance",
     social: {
@@ -61,7 +61,7 @@ export const authors: Author[] = [
     id: "author-aisha-khan",
     name: "Aisha Khan",
     slug: "aisha-khan",
-    avatar: "https://picsum.photos/seed/aisha-khan/200/200",
+    avatar: "",
     bio: "Educator, curriculum designer, and lifelong learner. Writing about edtech, skill-building, and the future of how we learn.",
     role: "Staff Writer — Education & Career",
     social: {
