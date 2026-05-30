@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { FiClock, FiEye, FiCalendar, FiArrowLeft, FiTwitter, FiLinkedin, FiLink } from "react-icons/fi";
+import { FiClock, FiEye, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import RecommendedSection from "@/components/sections/RecommendedSection";
 import Badge from "@/components/ui/Badge";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
 import { getCategoryGradientBg, formatDate, formatNumber, formatReadingTime, getInitials, absoluteUrl } from "@/lib/utils";
 import { getCategoryRoute } from "@/lib/routes";
+import ShareButtons from "./ShareButtons";
 import styles from "./page.module.css";
 
 interface PageProps {
@@ -121,35 +122,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
 
             {/* Share */}
-            <div className={styles.share}>
-              <span className={styles.shareLabel}>Share this article:</span>
-              <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.shareBtn}
-                aria-label="Share on Twitter"
-              >
-                <FiTwitter aria-hidden="true" /> Twitter
-              </a>
-              <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.shareBtn}
-                aria-label="Share on LinkedIn"
-              >
-                <FiLinkedin aria-hidden="true" /> LinkedIn
-              </a>
-              <button
-                className={styles.shareBtn}
-                onClick={() => navigator.clipboard.writeText(postUrl)}
-                aria-label="Copy link"
-                type="button"
-              >
-                <FiLink aria-hidden="true" /> Copy link
-              </button>
-            </div>
+            <ShareButtons title={post.title} url={postUrl} />
           </div>
         </div>
       </article>
