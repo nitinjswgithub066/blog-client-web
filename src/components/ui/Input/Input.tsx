@@ -51,8 +51,8 @@ export default function Input({
           id={inputId}
           className={cn(
             styles.input,
-            leftIcon && styles.hasLeftIcon,
-            rightIcon && styles.hasRightIcon,
+            !!leftIcon && styles.hasLeftIcon,
+            !!rightIcon && styles.hasRightIcon,
             className
           )}
           aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
