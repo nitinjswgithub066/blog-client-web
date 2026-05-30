@@ -5,6 +5,7 @@
 
 /* Design system */
 @import "../styles/tokens.css";
+@import "../styles/breakpoints.css";
 @import "../styles/utilities.css";
 
 /* --------------------------------------------------------------------------
@@ -48,6 +49,7 @@ body {
   overflow-x: hidden;
   transition: background-color var(--duration-slow) var(--ease-smooth),
   color var(--duration-slow) var(--ease-smooth);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Page content wrapper (set in layout.tsx) */

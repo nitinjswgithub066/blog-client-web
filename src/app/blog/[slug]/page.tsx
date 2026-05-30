@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FiClock, FiEye, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import RecommendedSection from "@/components/sections/RecommendedSection";
 import Badge from "@/components/ui/Badge";
-import Comments from "@/components/ui/Comments";
+import Comments from "@/components/ui/Comments/Comments";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
 import { getCategoryGradientBg, formatDate, formatNumber, formatReadingTime, getInitials, absoluteUrl } from "@/lib/utils";
 import { getCategoryRoute } from "@/lib/routes";

@@ -8,15 +8,10 @@
    Container
    -------------------------------------------------------------------------- */
 .container {
-  width: 100%;
-  max-width: var(--container-xl);
+  width: min(100% - 2rem, 1440px);
   margin-inline: auto;
-  padding-inline: var(--space-4);
 }
 
-@media (min-width: 640px)  { .container { padding-inline: var(--space-6); } }
-@media (min-width: 1024px) { .container { padding-inline: var(--space-8); } }
-@media (min-width: 1280px) { .container { padding-inline: var(--space-10); } }
 
 .container--narrow {
   max-width: var(--container-md);

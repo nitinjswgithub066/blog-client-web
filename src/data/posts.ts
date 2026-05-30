@@ -25,7 +25,11 @@ const [
   thoughts,
 ] = categories;
 
-const [vexira, aryan, priya, rohan, aisha] = authors;
+const vexira = authors[0];
+const aryan = vexira;
+const priya = vexira;
+const rohan = vexira;
+const aisha = vexira;
 
 // -----------------------------------------------------------------------------
 // Shared tag pool
