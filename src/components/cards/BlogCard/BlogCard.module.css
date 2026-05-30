@@ -28,13 +28,57 @@
 
 .horizontal .imageWrapper {
   width: 100%;
-  max-width: 200px;
+  max-width: 250px;
   flex-shrink: 0;
 }
 
 .horizontal .image {
   height: 100%;
   border-radius: 0;
+}
+
+@media (max-width: 767px) {
+  .horizontal {
+    position: relative;
+    display: block;
+    min-height: 250px;
+    overflow: hidden;
+  }
+
+  .horizontal .imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    max-width: none;
+  }
+
+  .horizontal .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateY(100%);
+    transition: transform var(--duration-base) var(--ease-smooth);
+  }
+
+  .horizontal:hover .content,
+  .horizontal:focus-within .content {
+    transform: translateY(0);
+  }
+
+  /* Adjust text colors for overlay */
+  .horizontal .titleLink { color: #fff; }
+  .horizontal .titleLink:hover { color: var(--accent-primary); }
+  .horizontal .excerpt { color: rgba(255, 255, 255, 0.8); }
+  .horizontal .authorName, .horizontal .date, .horizontal .metaItem { color: rgba(255, 255, 255, 0.7); }
+  .horizontal .footer { border-top-color: rgba(255, 255, 255, 0.15); }
 }
 
 /* ── Image ── */

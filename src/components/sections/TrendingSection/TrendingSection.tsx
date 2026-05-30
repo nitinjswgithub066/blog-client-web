@@ -7,7 +7,7 @@ import { ROUTES } from "@/lib/routes";
 import styles from "./TrendingSection.module.css";
 
 export default function TrendingSection() {
-  const trendingPosts = getTrendingPosts(8);
+  const trendingPosts = getTrendingPosts(5);
   const [top, ...rest] = trendingPosts;
 
   return (

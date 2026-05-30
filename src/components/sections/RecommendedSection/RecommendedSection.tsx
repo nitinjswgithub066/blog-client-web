@@ -15,8 +15,8 @@ export default function RecommendedSection({
   categorySlug,
 }: RecommendedSectionProps) {
   const posts = currentPostId && categorySlug
-    ? getRelatedPosts(currentPostId, categorySlug, 3)
-    : getLatestPosts(3);
+    ? getRelatedPosts(currentPostId, categorySlug, 4)
+    : getLatestPosts(4);
 
   if (posts.length === 0) return null;
 
@@ -33,7 +33,7 @@ export default function RecommendedSection({
 
         <div className={styles.grid}>
           {posts.map((post) => (
-            <BlogCard key={post.id} post={post} orientation="horizontal" />
+            <BlogCard key={post.id} post={post} orientation="vertical" />
           ))}
         </div>
       </div>

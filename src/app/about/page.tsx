@@ -68,10 +68,10 @@ export default function AboutPage() {
         {isSoloPublisher ? (
           <section className={styles.section} aria-labelledby="creator-heading">
             <h2 id="creator-heading" className={styles.sectionTitle}>About the Creator</h2>
-            <div className={styles.teamCard} style={{ maxWidth: 600 }}>
+            <div className={styles.creatorCard} style={{ maxWidth: 700 }}>
               <div
                 className={styles.teamAvatar}
-                style={{ background: accentColors[0], width: 64, height: 64, fontSize: "1.5rem" }}
+                style={{ background: accentColors[0], width: 64, height: 64, fontSize: "1.5rem", flexShrink: 0 }}
                 aria-hidden="true"
               >
                 {primaryAuthor.name.charAt(0)}

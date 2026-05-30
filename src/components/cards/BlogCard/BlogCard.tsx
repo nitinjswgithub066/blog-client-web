@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { FiClock, FiEye } from "react-icons/fi";
+import { FiEye } from "react-icons/fi";
 import Badge from "@/components/ui/Badge";
+import ShareModalButton from "./ShareModalButton";
 import { formatDate, formatNumber, formatReadingTime, getCategoryGradientBg, getInitials, cn } from "@/lib/utils";
 import { getPostRoute } from "@/lib/routes";
 import type { Post } from "@/types";
@@ -87,10 +88,7 @@ export default function BlogCard({
           </div>
 
           <div className={styles.meta}>
-            <span className={styles.metaItem}>
-              <FiClock aria-hidden="true" />
-              {formatReadingTime(post.readingTime)}
-            </span>
+            <ShareModalButton title={post.title} url={getPostRoute(post.slug)} />
             <span className={styles.metaItem}>
               <FiEye aria-hidden="true" />
               {formatNumber(post.views)}

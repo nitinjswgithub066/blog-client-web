@@ -17,7 +17,7 @@ export default function HomePage() {
       <HeroSection />
       <TrendingSection />
       <CategorySection />
-      <LatestPostsSection limit={6} showSidebar />
+      <LatestPostsSection limit={9} showSidebar />
     </>
   );
 }

@@ -113,9 +113,9 @@ export default function RootLayout({
     >
       <head>
         {/* Inject theme before paint — eliminates flash of wrong theme */}
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script id="theme-script" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

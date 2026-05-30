@@ -46,11 +46,25 @@
   line-height: var(--leading-relaxed);
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+}
+@media (min-width: 1024px) { .layout { grid-template-columns: 1fr 340px; } }
+
+.main { min-width: 0; }
+
+.sidebar {
+  position: sticky;
+  top: calc(64px + var(--space-6));
+  align-self: flex-start;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
-  max-width: 860px;
 }
 
 .empty {

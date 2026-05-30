@@ -121,6 +121,24 @@
   border-radius: var(--radius-xl);
   text-align: center;
 }
+
+.creatorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  text-align: left;
+}
+@media (min-width: 640px) {
+  .creatorCard {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
 .teamAvatar {
   width: 60px;
   height: 60px;

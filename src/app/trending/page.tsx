@@ -3,6 +3,7 @@ import { FiTrendingUp } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
 import { getTrendingPosts } from "@/data/posts";
 import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
+import Sidebar from "@/components/layout/Sidebar";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -28,12 +29,15 @@ export default function TrendingPage() {
           </p>
         </header>
 
-        <div className={styles.gridContainer}>
-          <InfiniteScrollList
-            initialPosts={initialPosts}
-            allPosts={allTrendingPosts}
-            chunkSize={12}
-          />
+        <div className={styles.layout}>
+          <div className={styles.main}>
+            <InfiniteScrollList
+              initialPosts={initialPosts}
+              allPosts={allTrendingPosts}
+              chunkSize={12}
+            />
+          </div>
+          <Sidebar hideTrending={true} className={styles.sidebar} />
         </div>
       </div>
     </div>

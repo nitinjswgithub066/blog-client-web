@@ -1,6 +1,8 @@
 .shareWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-3);
   padding-block: var(--space-4);
   border-top: 1px solid var(--border-subtle);
@@ -54,24 +56,3 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* On Desktop: Sticky floating sidebar */
-@media (min-width: 1024px) {
-  .shareWrapper {
-    position: sticky;
-    top: 100px; /* Below navbar */
-    flex-direction: column;
-    border-top: none;
-    margin-top: 0;
-    padding-block: 0;
-    width: fit-content;
-  }
-  
-  .shareRow {
-    flex-direction: column;
-  }
-  
-  /* Show text on hover for sticky icons on desktop */
-  .shareBtn:hover span {
-    display: inline;
-  }
-}

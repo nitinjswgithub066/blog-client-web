@@ -3,6 +3,7 @@ import { FiFeather } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
 import { getThoughtPosts } from "@/data/posts";
 import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
+import Sidebar from "@/components/layout/Sidebar";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -28,13 +29,15 @@ export default function ThoughtsPage() {
         </header>
 
         {posts.length > 0 ? (
-          <div className={styles.gridContainer}>
-            <InfiniteScrollList
-              initialPosts={posts.slice(0, 12)}
-              allPosts={posts}
-              chunkSize={12}
-              orientation="horizontal"
-            />
+          <div className={styles.layout}>
+            <div className={styles.main}>
+              <InfiniteScrollList
+                initialPosts={posts.slice(0, 12)}
+                allPosts={posts}
+                chunkSize={12}
+              />
+            </div>
+            <Sidebar hideTrending={true} className={styles.sidebar} />
           </div>
         ) : (
           <div className={styles.empty}>

@@ -11,26 +11,29 @@ import styles from "./Sidebar.module.css";
 
 interface SidebarProps {
   className?: string;
+  hideTrending?: boolean;
 }
 
 const trendingPosts = getTrendingPosts(5);
 const topCategories = categories.slice(0, 6);
 
-export default function Sidebar({ className }: SidebarProps) {
+export default function Sidebar({ className, hideTrending = false }: SidebarProps) {
   return (
     <aside className={cn(styles.sidebar, className)} aria-label="Sidebar">
       {/* Trending widget */}
-      <section className={styles.widget}>
-        <div className={styles.widgetHeader}>
-          <FiTrendingUp className={styles.widgetIcon} aria-hidden="true" />
-          <h2 className={styles.widgetTitle}>Trending Now</h2>
-        </div>
-        <div className={styles.trendingList}>
-          {trendingPosts.map((post, i) => (
-            <TrendingCard key={post.id} post={post} rank={i + 1} />
-          ))}
-        </div>
-      </section>
+      {!hideTrending && (
+        <section className={styles.widget}>
+          <div className={styles.widgetHeader}>
+            <FiTrendingUp className={styles.widgetIcon} aria-hidden="true" />
+            <h2 className={styles.widgetTitle}>Trending Now</h2>
+          </div>
+          <div className={styles.trendingList}>
+            {trendingPosts.map((post, i) => (
+              <TrendingCard key={post.id} post={post} rank={i + 1} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Categories widget */}
       <section className={styles.widget}>

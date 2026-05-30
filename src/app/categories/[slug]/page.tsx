@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import BlogCard from "@/components/cards/BlogCard";
 import Sidebar from "@/components/layout/Sidebar";
 import { getCategoryBySlug, categories } from "@/data/categories";
 import { getPostsByCategory } from "@/data/posts";
+import { getCategoryBreadcrumb } from "@/data/navigation";
 import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
 import { getCategoryGradientBg } from "@/lib/utils";
 import styles from "./page.module.css";
@@ -33,6 +35,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const posts = getPostsByCategory(slug);
   const gradient = getCategoryGradientBg(slug);
+  const breadcrumbs = getCategoryBreadcrumb(category.name, slug);
 
   return (
     <div className={styles.page}>
@@ -40,7 +43,18 @@ export default async function CategoryPage({ params }: PageProps) {
       <div className={styles.banner} style={{ background: gradient }}>
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
-          <p className={styles.bannerCount}>{posts.length} articles</p>
+          <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
+            {breadcrumbs.map((crumb, i) => (
+              <span key={crumb.href} className={styles.breadcrumbItem}>
+                {crumb.isActive ? (
+                  <span className={styles.breadcrumbActive}>{crumb.label}</span>
+                ) : (
+                  <Link href={crumb.href} className={styles.breadcrumbLink}>{crumb.label}</Link>
+                )}
+                {i < breadcrumbs.length - 1 && <span className={styles.breadcrumbSeparator}>/</span>}
+              </span>
+            ))}
+          </nav>
           <h1 className={styles.bannerTitle}>{category.name}</h1>
           <p className={styles.bannerDesc}>{category.description}</p>
         </div>
