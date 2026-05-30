@@ -1,7 +1,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: var(--z-navbar);
+  z-index: var(--z-sticky);
   width: 100%;
   transition:
     background     var(--duration-base) var(--ease-smooth),
