@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FiTrendingUp } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
 import { getTrendingPosts } from "@/data/posts";
+import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
   description: "Discover what's trending on VexiraHub — the most-read articles across all topics right now.",
 };
 
-const posts = getTrendingPosts(12);
+const allTrendingPosts = getTrendingPosts(50); // Get a larger chunk to allow scrolling
+const initialPosts = allTrendingPosts.slice(0, 12);
 
 export default function TrendingPage() {
   return (
@@ -26,10 +28,12 @@ export default function TrendingPage() {
           </p>
         </header>
 
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <BlogCard key={post.id} post={post} orientation="vertical" />
-          ))}
+        <div className={styles.gridContainer}>
+          <InfiniteScrollList
+            initialPosts={initialPosts}
+            allPosts={allTrendingPosts}
+            chunkSize={12}
+          />
         </div>
       </div>
     </div>

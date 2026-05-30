@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "../privacy-policy/page.module.css";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function TermsPage() {
           <h2>5. Changes to Terms</h2>
           <p>We may update these Terms from time to time. Continued use of the platform after any changes constitutes your acceptance of the new Terms.</p>
           <h2>6. Contact</h2>
-          <p>For questions about these Terms, contact us at <a href="mailto:legal@vexirahub.com">legal@vexirahub.com</a>.</p>
+          <p>For questions about these Terms, please visit our <Link href="/contact">Contact page</Link>.</p>
         </div>
       </div>
     </div>

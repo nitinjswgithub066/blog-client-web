@@ -1225,8 +1225,8 @@ export function getRelatedPosts(postId: string, categorySlug: string, limit = 3)
 
 /** Get categories that have at least one post */
 export function getActiveCategories() {
-  const usedSlugs = new Set(posts.map((p) => p.category.slug));
-  return Array.from(usedSlugs);
+  const activeSlugs = new Set(posts.map((p) => p.category.slug));
+  return categories.filter(c => activeSlugs.has(c.slug));
 }
 
 /** Latest posts with optional limit */
@@ -1254,8 +1254,32 @@ export function getAllPosts(): Post[] { return allPosts; }
 export function getFeaturedPosts(limit = 3): Post[] { return featuredPosts.slice(0, limit); }
 
 /** Get trending posts with optional limit */
-export function getTrendingPosts(limit = 8): Post[] { return trendingPosts.slice(0, limit); }
+export function getTrendingPosts(limit = 8): Post[] { 
+  // Dynamic mock logic: Sort by views
+  return [...allPosts].sort((a, b) => b.views - a.views).slice(0, limit);
+}
 
 /** Get thought posts */
 export function getThoughtPosts(): Post[] { return thoughtsPosts; }
 
+/** Get total views across all posts */
+export function getTotalViews(): number {
+  return allPosts.reduce((acc, post) => acc + post.views, 0);
+}
+
+/** Get the maximum reading time across all posts */
+export function getMaxReadingTime(): number {
+  return Math.max(...allPosts.map((post) => post.readingTime));
+}
+
+/** Get the dynamic hero post */
+export function getHeroPost(): Post {
+  // Logic: 1. Newest featured post, fallback to highest views, fallback to random
+  const featured = getFeaturedPosts(1);
+  if (featured.length > 0) return featured[0];
+  
+  const trending = getTrendingPosts(1);
+  if (trending.length > 0) return trending[0];
+  
+  return allPosts[0];
+}

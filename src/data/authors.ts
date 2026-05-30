@@ -21,54 +21,6 @@ export const authors: Author[] = [
       website: "https://vexirahub.com",
     },
   },
-  {
-    id: "author-aryan-mehta",
-    name: "Aryan Mehta",
-    slug: "aryan-mehta",
-    avatar: "",
-    bio: "Full-stack developer and open-source contributor. Passionate about clean code, web performance, and making the web more accessible.",
-    role: "Staff Writer — Programming",
-    social: {
-      twitter: "https://twitter.com/aryanmehta",
-      github: "https://github.com/aryanmehta",
-    },
-  },
-  {
-    id: "author-priya-sharma",
-    name: "Priya Sharma",
-    slug: "priya-sharma",
-    avatar: "",
-    bio: "Startup founder turned writer. I cover the business of tech — fundraising, product strategy, and the human stories behind growing companies.",
-    role: "Staff Writer — Startups & Business",
-    social: {
-      twitter: "https://twitter.com/priyasharma",
-      linkedin: "https://linkedin.com/in/priyasharma",
-    },
-  },
-  {
-    id: "author-rohan-das",
-    name: "Rohan Das",
-    slug: "rohan-das",
-    avatar: "",
-    bio: "Finance enthusiast, crypto observer, and personal finance advocate. I help people make sense of money in the digital age.",
-    role: "Staff Writer — Finance",
-    social: {
-      twitter: "https://twitter.com/rohandas",
-      linkedin: "https://linkedin.com/in/rohandas",
-    },
-  },
-  {
-    id: "author-aisha-khan",
-    name: "Aisha Khan",
-    slug: "aisha-khan",
-    avatar: "",
-    bio: "Educator, curriculum designer, and lifelong learner. Writing about edtech, skill-building, and the future of how we learn.",
-    role: "Staff Writer — Education & Career",
-    social: {
-      twitter: "https://twitter.com/aishakhan",
-      linkedin: "https://linkedin.com/in/aishakhan",
-    },
-  },
 ];
 
 // -----------------------------------------------------------------------------

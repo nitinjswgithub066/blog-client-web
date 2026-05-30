@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function PrivacyPage() {
           <h2>4. Data Security</h2>
           <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.</p>
           <h2>5. Contact Us</h2>
-          <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:privacy@vexirahub.com">privacy@vexirahub.com</a>.</p>
+          <p>If you have questions about this Privacy Policy, please visit our <Link href="/contact">Contact page</Link>.</p>
         </div>
       </div>
     </div>

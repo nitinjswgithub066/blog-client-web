@@ -1,15 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiTrendingUp, FiZap } from "react-icons/fi";
 import FeaturedCard from "@/components/cards/FeaturedCard";
-import { getFeaturedPosts } from "@/data/posts";
+import { getHeroPost, getFeaturedPosts } from "@/data/posts";
 import { ROUTES } from "@/lib/routes";
 import styles from "./HeroSection.module.css";
-
-const featuredPosts = getFeaturedPosts(3);
-
 import type { Variants } from "framer-motion";
 
 const fadeUp: Variants = {
@@ -18,10 +15,12 @@ const fadeUp: Variants = {
     opacity: 1, y: 0,
     transition: { delay: i * 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
   }),
+  exit: { opacity: 0, y: -24, transition: { duration: 0.3 } }
 };
 
 export default function HeroSection() {
-  const [hero, ...secondary] = featuredPosts;
+  const hero = getHeroPost();
+  const secondary = getFeaturedPosts(3).filter(p => p.id !== hero?.id).slice(0, 2);
 
   if (!hero) return null;
 
@@ -50,15 +49,19 @@ export default function HeroSection() {
         {/* Hero grid */}
         <div className={styles.grid}>
           {/* Primary hero card */}
-          <motion.div
-            className={styles.heroCard}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            variants={fadeUp}
-          >
-            <FeaturedCard post={hero} size="hero" />
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={hero.id}
+              className={styles.heroCard}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              custom={1}
+              variants={fadeUp}
+            >
+              <FeaturedCard post={hero} size="hero" />
+            </motion.div>
+          </AnimatePresence>
 
           {/* Secondary cards */}
           {secondary.length > 0 && (

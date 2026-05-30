@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "../privacy-policy/page.module.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function CookiesPage() {
           <h2>3. Managing Cookies</h2>
           <p>You can control and/or delete cookies as you wish through your browser settings. Deleting cookies may affect certain features of our platform, such as theme preferences.</p>
           <h2>4. Contact</h2>
-          <p>For questions about our Cookies Policy, contact us at <a href="mailto:privacy@vexirahub.com">privacy@vexirahub.com</a>.</p>
+          <p>For questions about our Cookies Policy, please visit our <Link href="/contact">Contact page</Link>.</p>
         </div>
       </div>
     </div>

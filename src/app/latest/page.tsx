@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { FiClock } from "react-icons/fi";
-import BlogCard from "@/components/cards/BlogCard";
 import Sidebar from "@/components/layout/Sidebar";
-import { getLatestPosts } from "@/data/posts";
+import { getAllPosts } from "@/data/posts";
+import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Latest Articles",
   description: "Browse all the latest articles published on VexiraHub — fresh content every day.",
 };
-
-const posts = getLatestPosts(18);
 
 export default function LatestPage() {
   return (
@@ -28,10 +26,12 @@ export default function LatestPage() {
         </header>
 
         <div className={styles.layout}>
-          <div className={styles.grid}>
-            {posts.map((post) => (
-              <BlogCard key={post.id} post={post} orientation="vertical" />
-            ))}
+          <div className={styles.gridContainer}>
+            <InfiniteScrollList
+              initialPosts={getAllPosts().slice(0, 12)}
+              allPosts={getAllPosts()}
+              chunkSize={12}
+            />
           </div>
           <Sidebar className={styles.sidebar} />
         </div>

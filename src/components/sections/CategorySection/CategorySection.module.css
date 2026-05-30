@@ -80,3 +80,17 @@
 @media (min-width: 640px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 900px)  { .grid { grid-template-columns: repeat(4, 1fr); } }
 @media (min-width: 1200px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+/* Add to the bottom of the file */
+.cardWrapper:nth-child(n+7) { display: none; }
+@media (min-width: 640px) {
+  .cardWrapper:nth-child(n+7) { display: block; }
+  .cardWrapper:nth-child(n+10) { display: none; }
+}
+@media (min-width: 900px) {
+  .cardWrapper:nth-child(n+10) { display: block; }
+  .cardWrapper:nth-child(n+13) { display: none; }
+}
+@media (min-width: 1200px) {
+  .cardWrapper:nth-child(n+13) { display: block; }
+  .cardWrapper:nth-child(n+16) { display: none; }
+}

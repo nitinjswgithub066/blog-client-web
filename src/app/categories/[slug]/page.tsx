@@ -4,6 +4,7 @@ import BlogCard from "@/components/cards/BlogCard";
 import Sidebar from "@/components/layout/Sidebar";
 import { getCategoryBySlug, categories } from "@/data/categories";
 import { getPostsByCategory } from "@/data/posts";
+import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
 import { getCategoryGradientBg } from "@/lib/utils";
 import styles from "./page.module.css";
 
@@ -50,10 +51,12 @@ export default async function CategoryPage({ params }: PageProps) {
         <div className={styles.layout}>
           <div className={styles.main}>
             {posts.length > 0 ? (
-              <div className={styles.grid}>
-                {posts.map((post) => (
-                  <BlogCard key={post.id} post={post} orientation="vertical" />
-                ))}
+              <div className={styles.gridContainer}>
+                <InfiniteScrollList
+                  initialPosts={posts.slice(0, 12)}
+                  allPosts={posts}
+                  chunkSize={12}
+                />
               </div>
             ) : (
               <div className={styles.empty}>

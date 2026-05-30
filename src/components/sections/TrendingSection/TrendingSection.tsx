@@ -6,9 +6,8 @@ import { getTrendingPosts } from "@/data/posts";
 import { ROUTES } from "@/lib/routes";
 import styles from "./TrendingSection.module.css";
 
-const trendingPosts = getTrendingPosts(8);
-
 export default function TrendingSection() {
+  const trendingPosts = getTrendingPosts(8);
   const [top, ...rest] = trendingPosts;
 
   return (

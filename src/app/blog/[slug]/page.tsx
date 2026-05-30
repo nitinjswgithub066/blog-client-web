@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FiClock, FiEye, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import RecommendedSection from "@/components/sections/RecommendedSection";
 import Badge from "@/components/ui/Badge";
+import Comments from "@/components/ui/Comments";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
 import { getCategoryGradientBg, formatDate, formatNumber, formatReadingTime, getInitials, absoluteUrl } from "@/lib/utils";
 import { getCategoryRoute } from "@/lib/routes";
@@ -123,6 +124,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             {/* Share */}
             <ShareButtons title={post.title} url={postUrl} />
+
+            {/* Comments */}
+            <Comments />
           </div>
         </div>
       </article>

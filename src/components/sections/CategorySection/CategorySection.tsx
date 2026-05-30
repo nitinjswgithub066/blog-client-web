@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { FiGrid } from "react-icons/fi";
 import CategoryCard from "@/components/cards/CategoryCard";
-import { categories } from "@/data/categories";
-import { getAllPosts } from "@/data/posts";
+import { getActiveCategories, getAllPosts } from "@/data/posts";
 import { ROUTES } from "@/lib/routes";
 import styles from "./CategorySection.module.css";
 
@@ -14,6 +13,7 @@ for (const p of allPosts) {
 }
 
 export default function CategorySection() {
+  const activeCategories = getActiveCategories().slice(0, 15); // Max 15 on desktop
   return (
     <section className={styles.section} aria-labelledby="categories-heading">
       <div className={styles.container}>
@@ -29,12 +29,13 @@ export default function CategorySection() {
         </div>
 
         <div className={styles.grid}>
-          {categories.map((cat) => (
-            <CategoryCard
-              key={cat.id}
-              category={cat}
-              postCount={postCountBySlug[cat.slug] ?? 0}
-            />
+          {activeCategories.map((cat) => (
+            <div key={cat.id} className={styles.cardWrapper}>
+              <CategoryCard
+                category={cat}
+                postCount={postCountBySlug[cat.slug] ?? 0}
+              />
+            </div>
           ))}
         </div>
       </div>
