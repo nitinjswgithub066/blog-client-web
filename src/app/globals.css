@@ -47,7 +47,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background-color var(--duration-slow) var(--ease-smooth),
-              color var(--duration-slow) var(--ease-smooth);
+  color var(--duration-slow) var(--ease-smooth);
 }
 
 /* Page content wrapper (set in layout.tsx) */
