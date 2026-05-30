@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border-radius: 50%;
+  border: 2px solid var(--border-default);
+  border-top-color: var(--accent-primary);
+  animation: spin var(--duration-xslow) linear infinite;
+}
+
+.sm { width: 16px; height: 16px; }
+.md { width: 28px; height: 28px; border-width: 3px; }
+.lg { width: 44px; height: 44px; border-width: 3px; }
