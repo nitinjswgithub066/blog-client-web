@@ -37,7 +37,7 @@ export default function ThoughtsPage() {
                 chunkSize={12}
               />
             </div>
-            <Sidebar hideTrending={true} className={styles.sidebar} />
+            <Sidebar className={styles.sidebar} />
           </div>
         ) : (
           <div className={styles.empty}>

@@ -9,6 +9,9 @@
     box-shadow    var(--duration-base) var(--ease-smooth),
     border-color  var(--duration-base) var(--ease-smooth);
   height: 100%;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .card:hover {
