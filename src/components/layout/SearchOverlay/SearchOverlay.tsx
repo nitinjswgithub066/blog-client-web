@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,9 +28,13 @@ interface SearchOverlayProps {
 
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Post[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  const handleClose = useCallback(() => {
+    setQuery("");
+    onClose();
+  }, [onClose]);
 
   useScrollLock(isOpen);
 
@@ -38,9 +42,6 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 100);
-    } else {
-      setQuery("");
-      setResults([]);
     }
   }, [isOpen]);
 
@@ -48,24 +49,22 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") handleClose();
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
-  // Live search
-  useEffect(() => {
-    if (!query.trim()) { setResults([]); return; }
+  const results = useMemo<Post[]>(() => {
     const trimmed = query.trim();
-    setResults(searchPosts(trimmed).slice(0, 6));
+    return trimmed ? searchPosts(trimmed).slice(0, 6) : [];
   }, [query]);
 
   function handleFullSearch(e?: React.FormEvent) {
     e?.preventDefault();
     if (!query.trim()) return;
     router.push(getSearchRoute(query.trim()));
-    onClose();
+    handleClose();
   }
 
   return (
@@ -79,7 +78,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            onClick={onClose}
+            onClick={handleClose}
             aria-hidden="true"
           />
 
@@ -120,7 +119,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
               <button
                 type="button"
                 className={styles.closeBtn}
-                onClick={onClose}
+                onClick={handleClose}
                 aria-label="Close search"
               >
                 <FiX />
@@ -138,7 +137,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                         <Link
                           href={getPostRoute(post.slug)}
                           className={styles.resultItem}
-                          onClick={onClose}
+                          onClick={handleClose}
                         >
                           <div
                             className={styles.resultThumb}
@@ -210,7 +209,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                           key={cat.id}
                           href={getCategoryRoute(cat.slug)}
                           className={styles.catChip}
-                          onClick={onClose}
+                          onClick={handleClose}
                           style={{ borderColor: `color-mix(in srgb, ${cat.accentColor} 35%, transparent)` }}
                         >
                           {cat.name}

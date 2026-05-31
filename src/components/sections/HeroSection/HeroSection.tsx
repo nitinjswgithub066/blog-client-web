@@ -37,7 +37,7 @@ export default function HeroSection() {
         >
           <div className={styles.badge}>
             <FiZap className={styles.badgeIcon} aria-hidden="true" />
-            <span>FULLSTACK BLOG AND NEWS PLATFORM</span>
+            <span>VEXIRAHUB News And Tech Blog</span>
           </div>
           <div className={styles.headerRight}>
             <Link href={ROUTES.TRENDING} className={styles.viewAll}>

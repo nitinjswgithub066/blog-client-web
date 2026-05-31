@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
 import { FiSun, FiMoon } from "react-icons/fi";
@@ -11,19 +13,21 @@ interface ThemeToggleProps {
 }
 
 export default function ThemeToggle({ className, compact = false }: ThemeToggleProps) {
-  const { theme, toggleTheme, mounted } = useTheme();
+  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // Don't render until mounted to prevent hydration mismatch
-  if (!mounted) {
-    return <div className={cn(styles.placeholder, compact && styles.compact, className)} />;
-  }
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
-  const isDark = theme === "dark";
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <button
       id="theme-toggle"
       className={cn(styles.toggle, compact && styles.compact, className)}
+      suppressHydrationWarning
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Light mode" : "Dark mode"}

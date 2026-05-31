@@ -79,9 +79,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  min-width: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .grid {
     grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
   }
@@ -89,6 +90,7 @@
 
 .heroCard {
   height: 100%;
+  min-width: 0;
 }
 
 /* ── Secondary cards column ── */
@@ -97,6 +99,7 @@
   flex-direction: column;
   gap: var(--space-4);
   height: 100%;
+  min-width: 0;
 }
 
 .secondaryCard {

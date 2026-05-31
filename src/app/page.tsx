@@ -3,7 +3,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import TrendingSection from "@/components/sections/TrendingSection";
 import CategorySection from "@/components/sections/CategorySection";
 import LatestPostsSection from "@/components/sections/LatestPostsSection";
-import NewsletterSection from "@/components/sections/NewsletterSection";
 
 export const metadata: Metadata = {
   title: "VexiraHub — Fullstack Blog and News Platform",

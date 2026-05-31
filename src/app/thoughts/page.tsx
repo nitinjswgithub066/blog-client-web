@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { FiFeather } from "react-icons/fi";
-import BlogCard from "@/components/cards/BlogCard";
 import { getThoughtPosts } from "@/data/posts";
 import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
 import Sidebar from "@/components/layout/Sidebar";

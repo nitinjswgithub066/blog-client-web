@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import BlogCard from "@/components/cards/BlogCard";
 import type { Post } from "@/types";
+import { cn } from "@/lib/utils";
 import styles from "./InfiniteScrollList.module.css";
 
 interface InfiniteScrollListProps {
@@ -12,9 +13,9 @@ interface InfiniteScrollListProps {
   orientation?: "vertical" | "horizontal";
 }
 
-export default function InfiniteScrollList({ 
-  initialPosts, 
-  allPosts, 
+export default function InfiniteScrollList({
+  initialPosts,
+  allPosts,
   chunkSize = 12,
   orientation = "vertical",
 }: InfiniteScrollListProps) {
@@ -22,6 +23,22 @@ export default function InfiniteScrollList({
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(allPosts.length > initialPosts.length);
   const loaderRef = useRef<HTMLDivElement>(null);
+
+  const loadMorePosts = useCallback(() => {
+    setIsLoading(true);
+    // Simulate network delay for premium smooth UX
+    setTimeout(() => {
+      setDisplayedPosts((prev) => {
+        const nextPosts = allPosts.slice(prev.length, prev.length + chunkSize);
+        const updated = [...prev, ...nextPosts];
+        if (updated.length >= allPosts.length) {
+          setHasMore(false);
+        }
+        return updated;
+      });
+      setIsLoading(false);
+    }, 800);
+  }, [allPosts, chunkSize]);
 
   useEffect(() => {
     const currentLoader = loaderRef.current;
@@ -44,23 +61,7 @@ export default function InfiniteScrollList({
         observer.unobserve(currentLoader);
       }
     };
-  }, [hasMore, isLoading, displayedPosts, allPosts, chunkSize]);
-
-  const loadMorePosts = () => {
-    setIsLoading(true);
-    // Simulate network delay for premium smooth UX
-    setTimeout(() => {
-      const currentLength = displayedPosts.length;
-      const nextPosts = allPosts.slice(currentLength, currentLength + chunkSize);
-      
-      setDisplayedPosts((prev) => [...prev, ...nextPosts]);
-      setIsLoading(false);
-      
-      if (currentLength + chunkSize >= allPosts.length) {
-        setHasMore(false);
-      }
-    }, 800);
-  };
+  }, [hasMore, isLoading, loadMorePosts]);
 
   return (
     <div className={styles.listWrapper}>
@@ -74,8 +75,19 @@ export default function InfiniteScrollList({
         <div className={styles.loaderContainer}>
           <div className={styles.skeletonGrid}>
             {[...Array(orientation === "vertical" ? 2 : 1)].map((_, i) => (
-              <div key={i} className={styles.skeletonCard} style={orientation === "horizontal" ? { height: '220px' } : undefined}>
-                <div className={styles.skeletonImage} style={orientation === "horizontal" ? { display: 'none' } : undefined} />
+              <div
+                key={i}
+                className={cn(
+                  styles.skeletonCard,
+                  orientation === "horizontal" && styles.skeletonCardHorizontal
+                )}
+              >
+                <div
+                  className={cn(
+                    styles.skeletonImage,
+                    orientation === "horizontal" && styles.skeletonImageHidden
+                  )}
+                />
                 <div className={styles.skeletonContent}>
                   <div className={styles.skeletonBadge} />
                   <div className={styles.skeletonTitle} />
@@ -89,7 +101,7 @@ export default function InfiniteScrollList({
       )}
 
       {hasMore && !isLoading && (
-        <div ref={loaderRef} style={{ height: "20px", width: "100%" }} />
+        <div ref={loaderRef} className={styles.loaderSpacer} />
       )}
 
       {!hasMore && displayedPosts.length > 0 && (

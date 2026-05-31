@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +26,8 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const megaButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Scroll detection for shadow/blur effect
   useEffect(() => {
@@ -46,6 +48,24 @@ export default function Navbar() {
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, []);
+
+  useEffect(() => {
+    if (megaButtonRef.current) {
+      megaButtonRef.current.setAttribute(
+        "aria-expanded",
+        megaMenuOpen ? "true" : "false"
+      );
+    }
+  }, [megaMenuOpen]);
+
+  useEffect(() => {
+    if (mobileMenuButtonRef.current) {
+      mobileMenuButtonRef.current.setAttribute(
+        "aria-expanded",
+        drawerOpen ? "true" : "false"
+      );
+    }
+  }, [drawerOpen]);
 
   return (
     <>
@@ -78,7 +98,10 @@ export default function Navbar() {
                     <button
                       className={cn(styles.navLink, isActive && styles.active)}
                       aria-haspopup="true"
-                      aria-expanded={megaMenuOpen}
+                      aria-expanded="false"
+                      aria-controls="nav-mega-menu"
+                      type="button"
+                      ref={megaButtonRef}
                     >
                       {Icon && <Icon className={styles.navIcon} />}
                       {link.label}
@@ -92,6 +115,7 @@ export default function Navbar() {
                       {megaMenuOpen && (
                         <motion.div
                           className={styles.megaMenu}
+                          id="nav-mega-menu"
                           initial={{ opacity: 0, y: -8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -6 }}
@@ -143,6 +167,7 @@ export default function Navbar() {
             <button
               id="search-btn"
               className={styles.actionBtn}
+              type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Open search (Ctrl+K)"
               title="Search (Ctrl+K)"
@@ -160,9 +185,11 @@ export default function Navbar() {
             <button
               id="mobile-menu-btn"
               className={cn(styles.actionBtn, styles.menuBtn)}
+              type="button"
               onClick={() => setDrawerOpen(true)}
               aria-label="Open navigation menu"
-              aria-expanded={drawerOpen}
+              aria-expanded="false"
+              ref={mobileMenuButtonRef}
             >
               <FiMenu aria-hidden="true" />
             </button>

@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)",  color: "#09090B" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090B" },
     { media: "(prefers-color-scheme: light)", color: "#FAFAFA" },
   ],
   width: "device-width",
@@ -83,21 +83,6 @@ export const viewport: Viewport = {
   maximumScale: 1,
   viewportFit: "cover",
 };
-
-// ── Inline script: set theme before first paint (prevents flash) ──────────────
-const themeScript = `
-(function(){
-  try {
-    var stored = localStorage.getItem('vexirahub-theme');
-    var theme = stored === 'dark' || stored === 'light'
-      ? stored
-      : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch(e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
-})();
-`.trim();
 
 // ── Layout ───────────────────────────────────────────────────────────────────
 
@@ -108,12 +93,11 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* Inject theme before paint — eliminates flash of wrong theme */}
-        <script id="theme-script" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body suppressHydrationWarning>
         <Navbar />

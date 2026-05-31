@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import type { InputVariant } from "@/types";
 import styles from "./Input.module.css";
@@ -31,6 +32,13 @@ export default function Input({
   ...props
 }: InputProps) {
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.setAttribute("aria-invalid", error ? "true" : "false");
+    }
+  }, [error]);
 
   return (
     <div className={cn(styles.wrapper, fullWidth && styles.fullWidth, wrapperClassName)}>
@@ -49,6 +57,7 @@ export default function Input({
 
         <input
           id={inputId}
+          ref={inputRef}
           className={cn(
             styles.input,
             !!leftIcon && styles.hasLeftIcon,
@@ -56,7 +65,7 @@ export default function Input({
             className
           )}
           aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
-          aria-invalid={!!error}
+          aria-invalid="false"
           {...props}
         />
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { FiShare2, FiX, FiTwitter, FiLinkedin, FiFacebook, FiCopy, FiCheck } from "react-icons/fi";
 import styles from "./ShareModalButton.module.css";
@@ -8,22 +8,24 @@ import styles from "./ShareModalButton.module.css";
 interface ShareModalButtonProps {
   title: string;
   url: string;
+  className?: string;
+  showLabel?: boolean;
 }
 
-export default function ShareModalButton({ title, url: pathUrl }: ShareModalButtonProps) {
+export default function ShareModalButton({ title, url: pathUrl, className, showLabel }: ShareModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isBrowser = typeof window !== "undefined";
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   // Compute absolute URL on the client side
-  const url = mounted ? `${window.location.origin}${pathUrl}` : pathUrl;
+  const url = isBrowser ? `${window.location.origin}${pathUrl}` : pathUrl;
 
   // Lock scroll when modal is open
   useEffect(() => {
+    if (triggerRef.current) {
+      triggerRef.current.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -64,7 +66,7 @@ export default function ShareModalButton({ title, url: pathUrl }: ShareModalButt
     const encodedTitle = encodeURIComponent(title);
     let shareUrl = "";
 
-    if (platform === "twitter")  shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+    if (platform === "twitter") shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
     if (platform === "linkedin") shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
     if (platform === "facebook") shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
 
@@ -125,16 +127,18 @@ export default function ShareModalButton({ title, url: pathUrl }: ShareModalButt
     <div className={styles.container}>
       <button
         type="button"
-        className={styles.triggerBtn}
+        className={className || styles.triggerBtn}
         onClick={openModal}
         aria-label="Share post"
-        aria-expanded={isOpen}
+        aria-expanded="false"
+        ref={triggerRef}
       >
         <FiShare2 aria-hidden="true" />
+        {showLabel && <span>Share</span>}
       </button>
 
       {/* Portal so the modal renders at body level, escaping card overflow:hidden */}
-      {mounted && createPortal(modal, document.body)}
+      {isBrowser && createPortal(modal, document.body)}
     </div>
   );
 }

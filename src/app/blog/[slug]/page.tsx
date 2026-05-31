@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FiClock, FiEye, FiCalendar, FiArrowLeft } from "react-icons/fi";
-import RecommendedSection from "@/components/sections/RecommendedSection";
 import Badge from "@/components/ui/Badge";
 import Comments from "@/components/ui/Comments/Comments";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
@@ -131,11 +130,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </article>
 
-      {/* Related posts */}
-      <RecommendedSection
-        currentPostId={post.id}
-        categorySlug={post.category.slug}
-      />
     </>
   );
 }

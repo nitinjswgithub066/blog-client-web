@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FiUser, FiMessageSquare, FiCornerDownRight } from "react-icons/fi";
+import { FiUser, FiMessageSquare } from "react-icons/fi";
 import Button from "@/components/ui/Button";
 import styles from "./Comments.module.css";
 
@@ -55,7 +55,7 @@ export default function Comments() {
     if (!name.trim() || !text.trim()) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate API delay
     setTimeout(() => {
       const newComment: Comment = {
@@ -64,14 +64,14 @@ export default function Comments() {
         text,
         date: "Just now",
       };
-      
+
       setComments([newComment, ...comments]);
       setText("");
       setIsSubmitting(false);
     }, 600);
   };
 
-  const CommentNode = ({ comment, isReply = false }: { comment: Comment; isReply?: boolean }) => (
+  const CommentNode = ({ comment }: { comment: Comment }) => (
     <div className={styles.commentItem}>
       <div className={styles.commentAvatar}>
         {comment.author.charAt(0).toUpperCase()}
@@ -92,7 +92,7 @@ export default function Comments() {
         {comment.replies && comment.replies.length > 0 && (
           <div className={styles.replies}>
             {comment.replies.map((reply) => (
-              <CommentNode key={reply.id} comment={reply} isReply />
+              <CommentNode key={reply.id} comment={reply} />
             ))}
           </div>
         )}

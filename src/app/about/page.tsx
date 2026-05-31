@@ -10,7 +10,12 @@ export const metadata: Metadata = {
   description: "Learn about VexiraHub — our mission, our team, and the story behind the platform.",
 };
 
-const accentColors = ["#6366F1", "#EC4899", "#10B981", "#F59E0B"];
+const accentClasses = [
+  styles.accentIndigo,
+  styles.accentPink,
+  styles.accentEmerald,
+  styles.accentAmber,
+];
 
 export default function AboutPage() {
   const isSoloPublisher = authors.length === 1;
@@ -20,7 +25,7 @@ export default function AboutPage() {
   const topicsCovered = getActiveCategories().length;
   const totalViews = getTotalViews();
   const maxReadingTime = getMaxReadingTime();
-  
+
   // Mock subscribers until backend is added
   const subscribersCount = "12K+";
 
@@ -68,10 +73,9 @@ export default function AboutPage() {
         {isSoloPublisher ? (
           <section className={styles.section} aria-labelledby="creator-heading">
             <h2 id="creator-heading" className={styles.sectionTitle}>About the Creator</h2>
-            <div className={styles.creatorCard} style={{ maxWidth: 700 }}>
+            <div className={`${styles.creatorCard} ${styles.creatorCardSolo}`}>
               <div
-                className={styles.teamAvatar}
-                style={{ background: accentColors[0], width: 64, height: 64, fontSize: "1.5rem", flexShrink: 0 }}
+                className={`${styles.teamAvatar} ${styles.teamAvatarLarge} ${accentClasses[0]}`}
                 aria-hidden="true"
               >
                 {primaryAuthor.name.charAt(0)}
@@ -79,7 +83,7 @@ export default function AboutPage() {
               <div className={styles.teamInfo}>
                 <span className={styles.teamName}>{primaryAuthor.name}</span>
                 <span className={styles.teamRole}>{primaryAuthor.role}</span>
-                <p style={{ marginTop: "12px", color: "var(--text-secondary)", lineHeight: 1.6 }}>
+                <p className={styles.creatorBio}>
                   {primaryAuthor.bio}
                 </p>
               </div>
@@ -89,21 +93,23 @@ export default function AboutPage() {
           <section className={styles.section} aria-labelledby="team-heading">
             <h2 id="team-heading" className={styles.sectionTitle}>Meet the Team</h2>
             <div className={styles.teamGrid}>
-              {authors.map((member, i) => (
-                <div key={member.id} className={styles.teamCard}>
-                  <div
-                    className={styles.teamAvatar}
-                    style={{ background: accentColors[i % accentColors.length] }}
-                    aria-hidden="true"
-                  >
-                    {member.name.charAt(0)}
+              {authors.map((member, i) => {
+                const accentClass = accentClasses[i % accentClasses.length];
+                return (
+                  <div key={member.id} className={styles.teamCard}>
+                    <div
+                      className={`${styles.teamAvatar} ${accentClass}`}
+                      aria-hidden="true"
+                    >
+                      {member.name.charAt(0)}
+                    </div>
+                    <div className={styles.teamInfo}>
+                      <span className={styles.teamName}>{member.name}</span>
+                      <span className={styles.teamRole}>{member.role}</span>
+                    </div>
                   </div>
-                  <div className={styles.teamInfo}>
-                    <span className={styles.teamName}>{member.name}</span>
-                    <span className={styles.teamRole}>{member.role}</span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         )}
@@ -113,10 +119,10 @@ export default function AboutPage() {
           <h2 id="connect-heading" className={styles.sectionTitle}>Stay Connected</h2>
           <div className={styles.socialRow}>
             {[
-              { icon: FiTwitter,  label: "Twitter",  href: primaryAuthor.social?.twitter || "https://twitter.com/vexirahub"  },
-              { icon: FiLinkedin, label: "LinkedIn",  href: primaryAuthor.social?.linkedin || "https://linkedin.com/in/vexirahub" },
-              { icon: FiGithub,   label: "GitHub",    href: primaryAuthor.social?.github || "https://github.com/vexirahub"   },
-              { icon: FiMail,     label: "Email",     href: "mailto:hello@vexirahub.com"     },
+              { icon: FiTwitter, label: "Twitter", href: primaryAuthor.social?.twitter || "https://twitter.com/vexirahub" },
+              { icon: FiLinkedin, label: "LinkedIn", href: primaryAuthor.social?.linkedin || "https://linkedin.com/in/vexirahub" },
+              { icon: FiGithub, label: "GitHub", href: primaryAuthor.social?.github || "https://github.com/vexirahub" },
+              { icon: FiMail, label: "Email", href: "mailto:hello@vexirahub.com" },
             ].map(({ icon: Icon, label, href }) => (
               <a key={href} href={href} className={styles.socialLink}
                 target={href.startsWith("http") ? "_blank" : undefined}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FiEye } from "react-icons/fi";
 import Badge from "@/components/ui/Badge";
 import ShareModalButton from "./ShareModalButton";
-import { formatDate, formatNumber, formatReadingTime, getCategoryGradientBg, getInitials, cn } from "@/lib/utils";
+import { formatDate, formatNumber, getInitials, cn } from "@/lib/utils";
 import { getPostRoute } from "@/lib/routes";
 import type { Post } from "@/types";
 import type { CardOrientation } from "@/types";
@@ -15,12 +15,28 @@ interface BlogCardProps {
   priority?: boolean;
 }
 
+const gradientClassMap: Record<string, string> = {
+  technology: styles.gradientTechnology,
+  programming: styles.gradientProgramming,
+  "web-development": styles.gradientWebDevelopment,
+  ai: styles.gradientAi,
+  startups: styles.gradientStartups,
+  business: styles.gradientBusiness,
+  finance: styles.gradientFinance,
+  education: styles.gradientEducation,
+  career: styles.gradientCareer,
+  gaming: styles.gradientGaming,
+  entertainment: styles.gradientEntertainment,
+  reviews: styles.gradientReviews,
+  thoughts: styles.gradientThoughts,
+};
+
 export default function BlogCard({
   post,
   orientation = "vertical",
   className,
 }: BlogCardProps) {
-  const gradient = getCategoryGradientBg(post.category.slug);
+  const gradientClass = gradientClassMap[post.category.slug] ?? styles.gradientDefault;
 
   return (
     <article className={cn(styles.card, styles[orientation], className)}>
@@ -32,8 +48,7 @@ export default function BlogCard({
         tabIndex={-1}
       >
         <div
-          className={styles.image}
-          style={{ background: gradient }}
+          className={cn(styles.image, gradientClass)}
           aria-label={post.featuredImageAlt}
         >
           {/* Category initial overlay */}
@@ -73,8 +88,7 @@ export default function BlogCard({
           <div className={styles.author}>
             {/* Avatar */}
             <div
-              className={styles.avatar}
-              style={{ background: getCategoryGradientBg(post.category.slug) }}
+              className={cn(styles.avatar, gradientClass)}
               aria-hidden="true"
             >
               <span className={styles.avatarInitial}>

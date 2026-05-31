@@ -14,7 +14,7 @@ import { navConfig } from "@/data/navigation";
 import { isActiveRoutePrefix } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import styles from "./MobileDrawer.module.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Icon map for nav icons
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -36,8 +36,18 @@ interface MobileDrawerProps {
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const pathname = usePathname();
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const categoriesButtonRef = useRef<HTMLButtonElement>(null);
 
   useScrollLock(isOpen);
+
+  useEffect(() => {
+    if (categoriesButtonRef.current) {
+      categoriesButtonRef.current.setAttribute(
+        "aria-expanded",
+        categoriesOpen ? "true" : "false"
+      );
+    }
+  }, [categoriesOpen]);
 
   const allLinks = [
     ...navConfig.primary,
@@ -63,6 +73,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           {/* Drawer panel */}
           <motion.aside
             className={styles.drawer}
+            id="mobile-drawer"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
@@ -79,6 +90,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
               </Link>
               <button
                 className={styles.closeBtn}
+                type="button"
                 onClick={onClose}
                 aria-label="Close menu"
               >
@@ -98,8 +110,11 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                     <div key={link.href}>
                       <button
                         className={cn(styles.navItem, isActive && styles.active)}
+                        type="button"
                         onClick={() => setCategoriesOpen((o) => !o)}
-                        aria-expanded={categoriesOpen}
+                        aria-expanded="false"
+                        aria-controls="mobile-categories-submenu"
+                        ref={categoriesButtonRef}
                       >
                         {Icon && <Icon className={styles.navIcon} />}
                         <span className={styles.navLabel}>{link.label}</span>
@@ -112,6 +127,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                         {categoriesOpen && (
                           <motion.div
                             className={styles.subMenu}
+                            id="mobile-categories-submenu"
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import BlogCard from "@/components/cards/BlogCard";
 import Sidebar from "@/components/layout/Sidebar";
 import { getCategoryBySlug, categories } from "@/data/categories";
 import { getPostsByCategory } from "@/data/posts";
 import { getCategoryBreadcrumb } from "@/data/navigation";
 import InfiniteScrollList from "@/components/ui/InfiniteScrollList";
-import { getCategoryGradientBg } from "@/lib/utils";
 import styles from "./page.module.css";
 
 interface PageProps {
@@ -28,19 +26,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+const bannerGradientClassMap: Record<string, string> = {
+  technology: styles.bannerTechnology,
+  programming: styles.bannerProgramming,
+  "web-development": styles.bannerWebDevelopment,
+  ai: styles.bannerAi,
+  startups: styles.bannerStartups,
+  business: styles.bannerBusiness,
+  finance: styles.bannerFinance,
+  education: styles.bannerEducation,
+  career: styles.bannerCareer,
+  gaming: styles.bannerGaming,
+  entertainment: styles.bannerEntertainment,
+  reviews: styles.bannerReviews,
+  thoughts: styles.bannerThoughts,
+};
+
 export default async function CategoryPage({ params }: PageProps) {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) notFound();
 
   const posts = getPostsByCategory(slug);
-  const gradient = getCategoryGradientBg(slug);
   const breadcrumbs = getCategoryBreadcrumb(category.name, slug);
+  const bannerClass = bannerGradientClassMap[slug] ?? styles.bannerDefault;
 
   return (
     <div className={styles.page}>
       {/* Category hero banner */}
-      <div className={styles.banner} style={{ background: gradient }}>
+      <div className={`${styles.banner} ${bannerClass}`}>
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
           <nav className={styles.breadcrumbs} aria-label="Breadcrumb">

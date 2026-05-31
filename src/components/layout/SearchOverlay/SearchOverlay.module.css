@@ -2,8 +2,8 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.70);
-  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   z-index: var(--z-overlay);
 }
 
@@ -69,7 +69,9 @@
 }
 
 /* Remove browser default search X */
-.input::-webkit-search-cancel-button { display: none; }
+.input::-webkit-search-cancel-button {
+  display: none;
+}
 
 .clearBtn,
 .closeBtn {
@@ -87,7 +89,7 @@
   flex-shrink: 0;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth);
 }
 
 .clearBtn:hover,
@@ -98,7 +100,9 @@
 
 /* Hide close btn on desktop (panel close via backdrop) */
 @media (min-width: 640px) {
-  .closeBtn { display: none; }
+  .closeBtn {
+    display: none;
+  }
 }
 
 /* ── Body ── */
@@ -251,7 +255,7 @@
   cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth),
     border-color var(--duration-fast) var(--ease-smooth);
 }
 
@@ -278,8 +282,8 @@
   padding: var(--space-1) var(--space-3);
   text-decoration: none;
   transition:
-    color       var(--duration-fast) var(--ease-smooth),
-    background  var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth),
+    background var(--duration-fast) var(--ease-smooth);
 }
 
 .catChip:hover {

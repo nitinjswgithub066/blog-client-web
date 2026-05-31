@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FiTrendingUp } from "react-icons/fi";
 import TrendingCard from "@/components/cards/TrendingCard";
-import CategoryCard from "@/components/cards/CategoryCard";
 import NewsletterCard from "@/components/cards/NewsletterCard";
 import { getTrendingPosts } from "@/data/posts";
 import { categories } from "@/data/categories";

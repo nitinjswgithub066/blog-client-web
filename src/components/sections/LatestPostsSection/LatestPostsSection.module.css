@@ -20,7 +20,7 @@
 @media (min-width: 1024px) {
   .container {
     padding-inline: var(--space-8);
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: minmax(0, 1fr) 340px;
   }
 }
 
@@ -115,4 +115,5 @@
   position: sticky;
   top: calc(64px + var(--space-6));
   align-self: flex-start;
+  min-width: 0;
 }

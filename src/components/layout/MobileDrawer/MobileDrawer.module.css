@@ -2,8 +2,8 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   z-index: var(--z-overlay);
 }
 
@@ -72,8 +72,9 @@
   cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth);
 }
+
 .closeBtn:hover {
   background: var(--bg-elevated);
   color: var(--text-primary);
@@ -106,7 +107,7 @@
   text-align: left;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth);
 }
 
 .navItem:hover {
@@ -135,6 +136,7 @@
   transition: transform var(--duration-base) var(--ease-smooth);
   flex-shrink: 0;
 }
+
 .chevronOpen {
   transform: rotate(180deg);
 }
@@ -160,7 +162,7 @@
   text-decoration: none;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth);
 }
 
 .subItem:hover,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { FiSearch, FiX } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
@@ -13,11 +13,9 @@ function SearchResults() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") ?? "";
   const [query, setQuery] = useState(initialQuery);
-  const [results, setResults] = useState<Post[]>([]);
-
-  useEffect(() => {
-    if (!query.trim()) { setResults([]); return; }
-    setResults(searchPosts(query.trim()));
+  const results = useMemo<Post[]>(() => {
+    const trimmed = query.trim();
+    return trimmed ? searchPosts(trimmed) : [];
   }, [query]);
 
   return (
@@ -80,7 +78,15 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className={styles.page}><div className={styles.container}><p style={{ color: "var(--text-muted)" }}>Loading...</p></div></div>}>
+    <Suspense
+      fallback={
+        <div className={styles.page}>
+          <div className={styles.container}>
+            <p className={styles.loadingText}>Loading...</p>
+          </div>
+        </div>
+      }
+    >
       <SearchResults />
     </Suspense>
   );

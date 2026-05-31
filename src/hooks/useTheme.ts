@@ -31,17 +31,14 @@ function applyTheme(theme: Theme) {
 }
 
 export function useTheme() {
-  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
-  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === "undefined") return DEFAULT_THEME;
+    return getStoredTheme() ?? getSystemTheme();
+  });
 
-  // On mount: read stored preference or fall back to system preference
   useEffect(() => {
-    const stored = getStoredTheme();
-    const resolved = stored ?? getSystemTheme();
-    setThemeState(resolved);
-    applyTheme(resolved);
-    setMounted(true);
-  }, []);
+    applyTheme(theme);
+  }, [theme]);
 
   // Listen for system theme changes (only if user hasn't set a preference)
   useEffect(() => {
@@ -73,6 +70,5 @@ export function useTheme() {
     isLight: theme === "light",
     setTheme,
     toggleTheme,
-    mounted, // use to prevent hydration flash: only render toggle after mounted
   };
 }

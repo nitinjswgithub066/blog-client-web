@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import { FiMail, FiSend, FiCheckCircle } from "react-icons/fi";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
@@ -15,10 +14,10 @@ export default function ContactPage() {
 
   function validate() {
     const e: Record<string, string> = {};
-    if (!form.name.trim())                               e.name    = "Name is required.";
-    if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) e.email   = "Valid email is required.";
-    if (!form.subject.trim())                            e.subject = "Subject is required.";
-    if (!form.message.trim())                            e.message = "Message is required.";
+    if (!form.name.trim()) e.name = "Name is required.";
+    if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email is required.";
+    if (!form.subject.trim()) e.subject = "Subject is required.";
+    if (!form.message.trim()) e.message = "Message is required.";
     return e;
   }
 
@@ -55,10 +54,10 @@ export default function ContactPage() {
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.row}>
-            <Input id="contact-name"    label="Your name"    placeholder="Alex Morgan" value={form.name}    onChange={(e) => setForm({ ...form, name:    e.target.value })} error={errors.name}    fullWidth />
-            <Input id="contact-email"   label="Email"        type="email" placeholder="you@email.com" value={form.email}   onChange={(e) => setForm({ ...form, email:   e.target.value })} error={errors.email}   fullWidth />
+            <Input id="contact-name" label="Your name" placeholder="Alex Morgan" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} error={errors.name} fullWidth />
+            <Input id="contact-email" label="Email" type="email" placeholder="you@email.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} error={errors.email} fullWidth />
           </div>
-          <Input id="contact-subject"   label="Subject"      placeholder="How can we help?" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} error={errors.subject} fullWidth />
+          <Input id="contact-subject" label="Subject" placeholder="How can we help?" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} error={errors.subject} fullWidth />
           <div className={styles.textareaWrapper}>
             <label htmlFor="contact-message" className={styles.textareaLabel}>Message</label>
             <textarea

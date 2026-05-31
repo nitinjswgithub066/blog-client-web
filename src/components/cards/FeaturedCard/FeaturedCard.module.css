@@ -6,8 +6,8 @@
   flex-direction: column;
   justify-content: flex-end;
   transition:
-    transform   var(--duration-base) var(--ease-smooth),
-    box-shadow  var(--duration-base) var(--ease-smooth);
+    transform var(--duration-base) var(--ease-smooth),
+    box-shadow var(--duration-base) var(--ease-smooth);
 }
 
 .card:hover {
@@ -17,17 +17,24 @@
 
 /* ── Sizes ── */
 .hero {
+  min-height: 520px;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: 640px;
+  }
+}
+
+.secondary {
   min-height: 480px;
 }
 
-@media (min-width: 768px) { .hero { min-height: 560px; } }
-@media (min-width: 1024px) { .hero { min-height: 620px; } }
-
-.secondary {
-  min-height: 320px;
+@media (min-width: 900px) {
+  .secondary {
+    min-height: 440px;
+  }
 }
-
-@media (min-width: 768px) { .secondary { min-height: 380px; } }
 
 /* ── Background gradient ── */
 .background {
@@ -44,12 +51,10 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.92) 0%,
-    rgba(0, 0, 0, 0.60) 50%,
-    rgba(0, 0, 0, 0.20) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.60) 50%,
+      rgba(0, 0, 0, 0.20) 100%);
 }
 
 /* ── Content ── */
@@ -60,10 +65,13 @@
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-6);
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
-  .content { padding: var(--space-8); }
+  .content {
+    padding: var(--space-8);
+  }
 }
 
 /* ── Top row ── */
@@ -79,8 +87,8 @@
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   padding: 3px var(--space-3);
   border-radius: var(--radius-full);
   letter-spacing: var(--tracking-wide);
@@ -93,10 +101,14 @@
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
   color: #ffffff;
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
 }
 
-.hero .title   { font-size: clamp(var(--text-2xl), 3.5vw, var(--text-5xl)); }
-.secondary .title { font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl)); }
+@media (min-width: 900px) {
+  .title {
+    font-size: clamp(var(--text-lg), 2vw, var(--text-xl));
+  }
+}
 
 .titleLink {
   color: inherit;
@@ -105,6 +117,8 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .titleLink:hover {
@@ -121,17 +135,24 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ── Footer ── */
 .footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: var(--space-4);
-  flex-wrap: wrap;
   padding-top: var(--space-4);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .author {
@@ -157,11 +178,6 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.authorInfo {
-  display: flex;
-  flex-direction: column;
-}
-
 .authorName {
   font-size: var(--text-sm);
   font-weight: 600;
@@ -178,6 +194,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .metaItem {
@@ -187,6 +204,15 @@
   font-size: var(--text-xs);
   color: rgba(255, 255, 255, 0.60);
   white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+button.metaItem:hover {
+  color: #ffffff;
 }
 
 .readBtn {
@@ -198,14 +224,14 @@
   color: #ffffff;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
   text-decoration: none;
   transition:
-    background  var(--duration-fast) var(--ease-smooth),
-    transform   var(--duration-fast) var(--ease-smooth);
+    background var(--duration-fast) var(--ease-smooth),
+    transform var(--duration-fast) var(--ease-smooth);
   white-space: nowrap;
 }
 

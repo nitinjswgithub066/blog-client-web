@@ -12,8 +12,8 @@
   position: relative;
   overflow: hidden;
   transition:
-    transform    var(--duration-base) var(--ease-smooth),
-    box-shadow   var(--duration-base) var(--ease-smooth),
+    transform var(--duration-base) var(--ease-smooth),
+    box-shadow var(--duration-base) var(--ease-smooth),
     border-color var(--duration-base) var(--ease-smooth);
 }
 
@@ -59,6 +59,63 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+/* ── Category gradients ── */
+.gradientTechnology {
+  background: linear-gradient(135deg, #0d0221 0%, #1a0845 40%, #2d1b69 70%, #6C63FF 100%);
+}
+
+.gradientProgramming {
+  background: linear-gradient(135deg, #012018 0%, #03422f 40%, #065f46 70%, #10B981 100%);
+}
+
+.gradientWebDevelopment {
+  background: linear-gradient(135deg, #060d1f 0%, #0c1e4a 40%, #1e3a8a 70%, #3B82F6 100%);
+}
+
+.gradientAi {
+  background: linear-gradient(135deg, #0f0020 0%, #2e0066 40%, #5b21b6 70%, #8B5CF6 100%);
+}
+
+.gradientStartups {
+  background: linear-gradient(135deg, #1a0a00 0%, #451f00 40%, #78350f 70%, #F59E0B 100%);
+}
+
+.gradientBusiness {
+  background: linear-gradient(135deg, #1a0000 0%, #450000 40%, #7f1d1d 70%, #EF4444 100%);
+}
+
+.gradientFinance {
+  background: linear-gradient(135deg, #001412 0%, #022f2b 40%, #0f5955 70%, #14B8A6 100%);
+}
+
+.gradientEducation {
+  background: linear-gradient(135deg, #001018 0%, #01263a 40%, #0c4a6e 70%, #06B6D4 100%);
+}
+
+.gradientCareer {
+  background: linear-gradient(135deg, #1a0800 0%, #431200 40%, #7c2d12 70%, #F97316 100%);
+}
+
+.gradientGaming {
+  background: linear-gradient(135deg, #100020 0%, #2e0045 40%, #581c87 70%, #A855F7 100%);
+}
+
+.gradientEntertainment {
+  background: linear-gradient(135deg, #1a0015 0%, #4a003a 40%, #831843 70%, #EC4899 100%);
+}
+
+.gradientReviews {
+  background: linear-gradient(135deg, #081000 0%, #1a2e00 40%, #365314 70%, #84CC16 100%);
+}
+
+.gradientThoughts {
+  background: linear-gradient(135deg, #07090f 0%, #0f172a 40%, #1e293b 70%, #334155 100%);
+}
+
+.gradientDefault {
+  background: linear-gradient(135deg, #09090B 0%, #111114 40%, #18181C 70%, #27272A 100%);
+}
+
 /* ── Info ── */
 .info {
   display: flex;
@@ -77,4 +134,61 @@
   font-size: var(--text-xs);
   color: var(--text-muted);
   font-weight: 500;
+}
+
+/* ── Accent bars ── */
+.accentTechnology {
+  background: var(--cat-technology);
+}
+
+.accentProgramming {
+  background: var(--cat-programming);
+}
+
+.accentWebDevelopment {
+  background: var(--cat-web-dev);
+}
+
+.accentAi {
+  background: var(--cat-ai);
+}
+
+.accentStartups {
+  background: var(--cat-startups);
+}
+
+.accentBusiness {
+  background: var(--cat-business);
+}
+
+.accentFinance {
+  background: var(--cat-finance);
+}
+
+.accentEducation {
+  background: var(--cat-education);
+}
+
+.accentCareer {
+  background: var(--cat-career);
+}
+
+.accentGaming {
+  background: var(--cat-gaming);
+}
+
+.accentEntertainment {
+  background: var(--cat-entertainment);
+}
+
+.accentReviews {
+  background: var(--cat-reviews);
+}
+
+.accentThoughts {
+  background: var(--cat-thoughts);
+}
+
+.accentDefault {
+  background: var(--accent-primary);
 }
