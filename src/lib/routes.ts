@@ -9,21 +9,21 @@
 // -----------------------------------------------------------------------------
 export const ROUTES = {
   // Core pages
-  HOME:           "/",
-  TRENDING:       "/trending",
-  LATEST:         "/latest",
-  CATEGORIES:     "/categories",
-  THOUGHTS:       "/thoughts",
-  SEARCH:         "/search",
+  HOME: "/",
+  TRENDING: "/trending",
+  LATEST: "/latest",
+  CATEGORIES: "/categories",
+  THOUGHTS: "/thoughts",
+  SEARCH: "/search",
 
   // Company pages
-  ABOUT:          "/about",
-  CONTACT:        "/contact",
+  ABOUT: "/about",
+  CONTACT: "/contact",
 
   // Legal pages
   PRIVACY_POLICY: "/privacy-policy",
-  TERMS:          "/terms",
-  COOKIES:        "/cookies-policy",
+  TERMS: "/terms",
+  COOKIES: "/cookies-policy",
 } as const;
 
 // -----------------------------------------------------------------------------
@@ -87,7 +87,10 @@ export function isActiveRoute(pathname: string, route: string): boolean {
  * Check if a pathname starts with a route (for nested active states).
  * @example isActiveRoutePrefix("/categories/technology", "/categories") → true
  */
-export function isActiveRoutePrefix(pathname: string, routePrefix: string): boolean {
+export function isActiveRoutePrefix(
+  pathname: string,
+  routePrefix: string,
+): boolean {
   if (routePrefix === ROUTES.HOME) {
     return pathname === ROUTES.HOME;
   }

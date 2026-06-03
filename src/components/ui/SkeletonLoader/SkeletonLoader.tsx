@@ -8,7 +8,12 @@ interface SkeletonProps {
   rounded?: boolean;
 }
 
-function Skeleton({ className, width, height, rounded = false }: SkeletonProps) {
+function Skeleton({
+  className,
+  width,
+  height,
+  rounded = false,
+}: SkeletonProps) {
   return (
     <div
       className={cn(styles.skeleton, rounded && styles.rounded, className)}
@@ -41,7 +46,11 @@ export function BlogCardSkeleton() {
 
 export function TrendingCardSkeleton() {
   return (
-    <div className={styles.trending} aria-busy="true" aria-label="Loading trending article">
+    <div
+      className={styles.trending}
+      aria-busy="true"
+      aria-label="Loading trending article"
+    >
       <Skeleton className={styles.trendingImg} rounded />
       <div className={styles.trendingContent}>
         <Skeleton width="60px" height="16px" rounded />

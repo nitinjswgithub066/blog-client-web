@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   creator: "VexiraHub",
   publisher: "VexiraHub",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://vexirahub.com"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://vexirahub.com",
   ),
   openGraph: {
     type: "website",
@@ -97,8 +97,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
-      <head>
-      </head>
+      <head></head>
       <body suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>

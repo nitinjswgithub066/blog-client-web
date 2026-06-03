@@ -29,8 +29,8 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
-  icon: string;              // React Icons name, e.g. "FiCpu"
-  accentColor: string;       // CSS variable name, e.g. "var(--cat-technology)"
+  icon: string; // React Icons name, e.g. "FiCpu"
+  accentColor: string; // CSS variable name, e.g. "var(--cat-technology)"
   coverImage?: string;
 }
 
@@ -51,18 +51,18 @@ export interface Post {
   slug: string;
   title: string;
   excerpt: string;
-  content: string;           // Rich HTML string (for blog detail page)
+  content: string; // Rich HTML string (for blog detail page)
   category: Category;
   tags: Tag[];
   author: Author;
-  publishedAt: string;       // ISO 8601 date string
-  updatedAt?: string;        // ISO 8601 date string
-  readingTime: number;       // In minutes
-  featuredImage: string;     // URL
+  publishedAt: string; // ISO 8601 date string
+  updatedAt?: string; // ISO 8601 date string
+  readingTime: number; // In minutes
+  featuredImage: string; // URL
   featuredImageAlt: string;
   isFeatured: boolean;
   isTrending: boolean;
-  isThought: boolean;        // True for "Thoughts" category posts
+  isThought: boolean; // True for "Thoughts" category posts
   views: number;
   likes: number;
   seo?: PostSEO;
@@ -84,15 +84,15 @@ export interface PostSEO {
 export interface NavLink {
   label: string;
   href: string;
-  icon?: string;             // React Icons name
+  icon?: string; // React Icons name
   isExternal?: boolean;
-  children?: NavLink[];      // For dropdown menus
+  children?: NavLink[]; // For dropdown menus
 }
 
 export interface NavConfig {
-  primary: NavLink[];        // Main nav links
-  secondary: NavLink[];      // Secondary (more menu) links
-  mobileOnly: NavLink[];     // Links only shown in mobile drawer
+  primary: NavLink[]; // Main nav links
+  secondary: NavLink[]; // Secondary (more menu) links
+  mobileOnly: NavLink[]; // Links only shown in mobile drawer
 }
 
 // -----------------------------------------------------------------------------
@@ -100,7 +100,7 @@ export interface NavConfig {
 // -----------------------------------------------------------------------------
 export interface SearchResult {
   post: Post;
-  matchScore: number;        // 0–1 relevance score (for mock filtering)
+  matchScore: number; // 0–1 relevance score (for mock filtering)
 }
 
 export interface SearchSuggestion {
@@ -173,13 +173,24 @@ export type CardSize = "sm" | "md" | "lg";
 export type CardOrientation = "vertical" | "horizontal";
 
 /** Button variants */
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "danger";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "outline"
+  | "danger";
 
 /** Button sizes */
 export type ButtonSize = "xs" | "sm" | "md" | "lg";
 
 /** Badge variants */
-export type BadgeVariant = "default" | "accent" | "success" | "warning" | "danger" | "category";
+export type BadgeVariant =
+  | "default"
+  | "accent"
+  | "success"
+  | "warning"
+  | "danger"
+  | "category";
 
 /** Input variants */
 export type InputVariant = "default" | "search" | "glass";

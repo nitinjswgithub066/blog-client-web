@@ -18,7 +18,8 @@
 /* Scrolled state: glassmorphism */
 .scrolled {
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border-bottom-color: var(--glass-border);
   box-shadow: 0 1px 24px rgba(0, 0, 0, 0.12);

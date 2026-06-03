@@ -12,7 +12,10 @@ interface ThemeToggleProps {
   compact?: boolean; // icon-only, no label
 }
 
-export default function ThemeToggle({ className, compact = false }: ThemeToggleProps) {
+export default function ThemeToggle({
+  className,
+  compact = false,
+}: ThemeToggleProps) {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

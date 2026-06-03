@@ -7,7 +7,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Trending Articles",
-  description: "Discover what's trending on VexiraHub — the most-read articles across all topics right now.",
+  description:
+    "Discover what's trending on VexiraHub — the most-read articles across all topics right now.",
 };
 
 const allTrendingPosts = getTrendingPosts(50); // Get a larger chunk to allow scrolling

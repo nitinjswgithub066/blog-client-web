@@ -74,8 +74,8 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   transition:
-    background    var(--duration-fast) var(--ease-smooth),
-    box-shadow    var(--duration-fast) var(--ease-smooth);
+    background var(--duration-fast) var(--ease-smooth),
+    box-shadow var(--duration-fast) var(--ease-smooth);
 }
 
 .catChip:hover {

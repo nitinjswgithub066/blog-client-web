@@ -41,14 +41,27 @@ export default function Input({
   }, [error]);
 
   return (
-    <div className={cn(styles.wrapper, fullWidth && styles.fullWidth, wrapperClassName)}>
+    <div
+      className={cn(
+        styles.wrapper,
+        fullWidth && styles.fullWidth,
+        wrapperClassName,
+      )}
+    >
       {label && (
         <label htmlFor={inputId} className={styles.label}>
           {label}
         </label>
       )}
 
-      <div className={cn(styles.inputWrapper, styles[variant], error && styles.hasError)} suppressHydrationWarning>
+      <div
+        className={cn(
+          styles.inputWrapper,
+          styles[variant],
+          error && styles.hasError,
+        )}
+        suppressHydrationWarning
+      >
         {leftIcon && (
           <span className={styles.leftIcon} aria-hidden="true">
             {leftIcon}
@@ -62,9 +75,11 @@ export default function Input({
             styles.input,
             !!leftIcon && styles.hasLeftIcon,
             !!rightIcon && styles.hasRightIcon,
-            className
+            className,
           )}
-          aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
+          aria-describedby={
+            error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined
+          }
           aria-invalid="false"
           {...props}
         />

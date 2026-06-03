@@ -2,7 +2,7 @@
   background: linear-gradient(
     90deg,
     var(--bg-elevated) 25%,
-    var(--bg-raised)   50%,
+    var(--bg-raised) 50%,
     var(--bg-elevated) 75%
   );
   background-size: 200% 100%;
@@ -38,11 +38,26 @@
   padding: var(--space-5);
 }
 
-.badge  { border-radius: var(--radius-full); height: 20px; }
-.title  { height: 20px; width: 100%; }
-.titleShort { height: 20px; width: 60%; }
-.excerpt { height: 14px; width: 100%; }
-.excerptShort { height: 14px; width: 80%; }
+.badge {
+  border-radius: var(--radius-full);
+  height: 20px;
+}
+.title {
+  height: 20px;
+  width: 100%;
+}
+.titleShort {
+  height: 20px;
+  width: 60%;
+}
+.excerpt {
+  height: 14px;
+  width: 100%;
+}
+.excerptShort {
+  height: 14px;
+  width: 80%;
+}
 
 .meta {
   display: flex;

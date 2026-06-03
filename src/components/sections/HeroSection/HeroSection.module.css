@@ -2,7 +2,11 @@
   padding-block: var(--space-10);
 }
 
-@media (min-width: 1024px) { .section { padding-block: var(--space-14); } }
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-14);
+  }
+}
 
 .container {
   width: min(100% - 2rem, 1440px);
@@ -12,8 +16,16 @@
   gap: var(--space-6);
 }
 
-@media (min-width: 640px) { .container { padding-inline: var(--space-6); } }
-@media (min-width: 1024px) { .container { padding-inline: var(--space-8); } }
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
 
 /* ── Header ── */
 .header {
@@ -62,8 +74,8 @@
   border: 1px solid var(--border-default);
   background: var(--bg-elevated);
   transition:
-    color        var(--duration-fast) var(--ease-smooth),
-    background   var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth),
+    background var(--duration-fast) var(--ease-smooth),
     border-color var(--duration-fast) var(--ease-smooth);
   white-space: nowrap;
 }
@@ -117,8 +129,8 @@
   border-radius: var(--radius-xl);
   text-decoration: none;
   transition:
-    background    var(--duration-base) var(--ease-smooth),
-    border-color  var(--duration-base) var(--ease-smooth);
+    background var(--duration-base) var(--ease-smooth),
+    border-color var(--duration-base) var(--ease-smooth);
 }
 
 .ctaCard:hover {

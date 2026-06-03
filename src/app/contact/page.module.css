@@ -9,9 +9,17 @@
   flex-direction: column;
   gap: var(--space-10);
 }
-@media (min-width: 640px) { .container { padding-inline: var(--space-6); } }
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
 
-.header { display: flex; flex-direction: column; gap: var(--space-3); }
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
 
 .headerBadge {
   display: inline-flex;
@@ -54,7 +62,11 @@
   grid-template-columns: 1fr;
   gap: var(--space-4);
 }
-@media (min-width: 540px) { .row { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 540px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
 .textareaWrapper {
   display: flex;
@@ -82,7 +94,7 @@
   min-height: 120px;
   transition:
     border-color var(--duration-fast) var(--ease-smooth),
-    box-shadow   var(--duration-fast) var(--ease-smooth);
+    box-shadow var(--duration-fast) var(--ease-smooth);
 }
 .textarea:focus {
   outline: none;
@@ -90,15 +102,15 @@
   box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 .textareaError {
-  border-color: #EF4444;
+  border-color: #ef4444;
 }
 .textareaError:focus {
-  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
 }
 
 .errorText {
   font-size: var(--text-xs);
-  color: #EF4444;
+  color: #ef4444;
 }
 
 /* Success state */
@@ -112,7 +124,7 @@
 }
 .successIcon {
   font-size: 3.5rem;
-  color: #10B981;
+  color: #10b981;
 }
 .successTitle {
   font-size: var(--text-2xl);

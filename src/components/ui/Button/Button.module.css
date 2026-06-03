@@ -10,11 +10,11 @@
   cursor: pointer;
   transition:
     background-color var(--duration-fast) var(--ease-smooth),
-    color           var(--duration-fast) var(--ease-smooth),
-    border-color    var(--duration-fast) var(--ease-smooth),
-    box-shadow      var(--duration-fast) var(--ease-smooth),
-    transform       var(--duration-fast) var(--ease-smooth),
-    opacity         var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth),
+    border-color var(--duration-fast) var(--ease-smooth),
+    box-shadow var(--duration-fast) var(--ease-smooth),
+    transform var(--duration-fast) var(--ease-smooth),
+    opacity var(--duration-fast) var(--ease-smooth);
   white-space: nowrap;
   text-decoration: none;
   position: relative;
@@ -103,7 +103,7 @@
 
 .danger {
   background: rgba(239, 68, 68, 0.15);
-  color: #EF4444;
+  color: #ef4444;
   border-color: rgba(239, 68, 68, 0.35);
 }
 .danger:hover:not(:disabled) {

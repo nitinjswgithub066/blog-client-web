@@ -9,4 +9,8 @@
   padding-inline: var(--space-4);
 }
 
-@media (min-width: 640px) { .container { padding-inline: var(--space-6); } }
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}

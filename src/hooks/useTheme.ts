@@ -15,7 +15,9 @@ const DEFAULT_THEME: Theme = "dark";
 
 function getSystemTheme(): Theme {
   if (typeof window === "undefined") return DEFAULT_THEME;
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  return window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
 }
 
 function getStoredTheme(): Theme | null {

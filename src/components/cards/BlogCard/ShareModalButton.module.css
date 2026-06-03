@@ -36,8 +36,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ── Centered modal card ── */
@@ -53,8 +57,14 @@
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)     scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* ── Modal header ── */
@@ -164,9 +174,21 @@
   font-size: var(--text-lg);
 }
 
-.socialBtn.twitter:hover  { background: #1da1f2; color: #fff; border-color: #1da1f2; }
-.socialBtn.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
-.socialBtn.facebook:hover { background: #1877f2; color: #fff; border-color: #1877f2; }
+.socialBtn.twitter:hover {
+  background: #1da1f2;
+  color: #fff;
+  border-color: #1da1f2;
+}
+.socialBtn.linkedin:hover {
+  background: #0077b5;
+  color: #fff;
+  border-color: #0077b5;
+}
+.socialBtn.facebook:hover {
+  background: #1877f2;
+  color: #fff;
+  border-color: #1877f2;
+}
 
 /* ── Copy link button ── */
 .copyBtn {

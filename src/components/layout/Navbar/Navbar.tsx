@@ -5,8 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FiSearch, FiMenu, FiHome, FiTrendingUp,
-  FiClock, FiGrid, FiFeather, FiChevronDown,
+  FiSearch,
+  FiMenu,
+  FiHome,
+  FiTrendingUp,
+  FiClock,
+  FiGrid,
+  FiFeather,
+  FiChevronDown,
 } from "react-icons/fi";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import MobileDrawer from "@/components/layout/MobileDrawer";
@@ -17,7 +23,11 @@ import { cn } from "@/lib/utils";
 import styles from "./Navbar.module.css";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  FiHome, FiTrendingUp, FiClock, FiGrid, FiFeather,
+  FiHome,
+  FiTrendingUp,
+  FiClock,
+  FiGrid,
+  FiFeather,
 };
 
 export default function Navbar() {
@@ -53,7 +63,7 @@ export default function Navbar() {
     if (megaButtonRef.current) {
       megaButtonRef.current.setAttribute(
         "aria-expanded",
-        megaMenuOpen ? "true" : "false"
+        megaMenuOpen ? "true" : "false",
       );
     }
   }, [megaMenuOpen]);
@@ -62,7 +72,7 @@ export default function Navbar() {
     if (mobileMenuButtonRef.current) {
       mobileMenuButtonRef.current.setAttribute(
         "aria-expanded",
-        drawerOpen ? "true" : "false"
+        drawerOpen ? "true" : "false",
       );
     }
   }, [drawerOpen]);
@@ -106,7 +116,10 @@ export default function Navbar() {
                       {Icon && <Icon className={styles.navIcon} />}
                       {link.label}
                       <FiChevronDown
-                        className={cn(styles.navChevron, megaMenuOpen && styles.chevronOpen)}
+                        className={cn(
+                          styles.navChevron,
+                          megaMenuOpen && styles.chevronOpen,
+                        )}
                         aria-hidden="true"
                       />
                     </button>
@@ -127,7 +140,8 @@ export default function Navbar() {
                               href={child.href}
                               className={cn(
                                 styles.megaItem,
-                                isActiveRoutePrefix(pathname, child.href) && styles.megaItemActive
+                                isActiveRoutePrefix(pathname, child.href) &&
+                                  styles.megaItemActive,
                               )}
                               onClick={() => setMegaMenuOpen(false)}
                             >
@@ -153,7 +167,11 @@ export default function Navbar() {
                     <motion.span
                       className={styles.activeBar}
                       layoutId="navActiveBar"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </Link>

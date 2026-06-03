@@ -34,7 +34,7 @@
 }
 
 .hasError {
-  border-color: #EF4444;
+  border-color: #ef4444;
 }
 
 .hasError:focus-within {
@@ -123,7 +123,7 @@
 /* ── Messages ── */
 .error {
   font-size: var(--text-xs);
-  color: #EF4444;
+  color: #ef4444;
 }
 
 .hint {

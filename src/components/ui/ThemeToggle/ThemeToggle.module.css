@@ -41,8 +41,8 @@
   justify-content: center;
   transform: translateX(0);
   transition:
-    transform    var(--duration-base) var(--ease-spring),
-    background   var(--duration-base) var(--ease-smooth);
+    transform var(--duration-base) var(--ease-spring),
+    background var(--duration-base) var(--ease-smooth);
   color: #ffffff;
   flex-shrink: 0;
 }

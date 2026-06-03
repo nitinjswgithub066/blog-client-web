@@ -4,11 +4,21 @@ import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiX, FiTrendingUp, FiGrid, FiArrowRight } from "react-icons/fi";
+import {
+  FiSearch,
+  FiX,
+  FiTrendingUp,
+  FiGrid,
+  FiArrowRight,
+} from "react-icons/fi";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { searchPosts } from "@/data/posts";
 import { categories } from "@/data/categories";
-import { getCategoryGradientBg, getInitials, formatReadingTime } from "@/lib/utils";
+import {
+  getCategoryGradientBg,
+  getInitials,
+  formatReadingTime,
+} from "@/lib/utils";
 import { getPostRoute, getCategoryRoute, getSearchRoute } from "@/lib/routes";
 import type { Post } from "@/types";
 import styles from "./SearchOverlay.module.css";
@@ -141,7 +151,11 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                         >
                           <div
                             className={styles.resultThumb}
-                            style={{ background: getCategoryGradientBg(post.category.slug) }}
+                            style={{
+                              background: getCategoryGradientBg(
+                                post.category.slug,
+                              ),
+                            }}
                             aria-hidden="true"
                           >
                             <span className={styles.resultThumbInitial}>
@@ -149,12 +163,18 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                             </span>
                           </div>
                           <div className={styles.resultInfo}>
-                            <span className={styles.resultTitle}>{post.title}</span>
+                            <span className={styles.resultTitle}>
+                              {post.title}
+                            </span>
                             <span className={styles.resultMeta}>
-                              {post.category.name} · {formatReadingTime(post.readingTime)}
+                              {post.category.name} ·{" "}
+                              {formatReadingTime(post.readingTime)}
                             </span>
                           </div>
-                          <FiArrowRight className={styles.resultArrow} aria-hidden="true" />
+                          <FiArrowRight
+                            className={styles.resultArrow}
+                            aria-hidden="true"
+                          />
                         </Link>
                       </li>
                     ))}
@@ -174,8 +194,12 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
               {/* Empty state */}
               {query && results.length === 0 && (
                 <div className={styles.empty}>
-                  <p>No results for <strong>&quot;{query}&quot;</strong></p>
-                  <p className={styles.emptyHint}>Try searching for a topic, category, or author</p>
+                  <p>
+                    No results for <strong>&quot;{query}&quot;</strong>
+                  </p>
+                  <p className={styles.emptyHint}>
+                    Try searching for a topic, category, or author
+                  </p>
                 </div>
               )}
 
@@ -210,7 +234,9 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                           href={getCategoryRoute(cat.slug)}
                           className={styles.catChip}
                           onClick={handleClose}
-                          style={{ borderColor: `color-mix(in srgb, ${cat.accentColor} 35%, transparent)` }}
+                          style={{
+                            borderColor: `color-mix(in srgb, ${cat.accentColor} 35%, transparent)`,
+                          }}
                         >
                           {cat.name}
                         </Link>

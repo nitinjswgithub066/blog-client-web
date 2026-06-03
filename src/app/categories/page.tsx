@@ -7,13 +7,15 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "All Categories",
-  description: "Browse all content categories on VexiraHub — from Technology and AI to Finance, Gaming, and more.",
+  description:
+    "Browse all content categories on VexiraHub — from Technology and AI to Finance, Gaming, and more.",
 };
 
 const allPosts = getAllPosts();
 const postCountBySlug: Record<string, number> = {};
 for (const p of allPosts) {
-  postCountBySlug[p.category.slug] = (postCountBySlug[p.category.slug] ?? 0) + 1;
+  postCountBySlug[p.category.slug] =
+    (postCountBySlug[p.category.slug] ?? 0) + 1;
 }
 
 export default function CategoriesPage() {
@@ -27,7 +29,8 @@ export default function CategoriesPage() {
           </div>
           <h1 className={styles.pageTitle}>Browse All Topics</h1>
           <p className={styles.pageSubtitle}>
-            {categories.length} curated topics — find the content that matters to you.
+            {categories.length} curated topics — find the content that matters
+            to you.
           </p>
         </header>
 

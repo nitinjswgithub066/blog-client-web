@@ -32,19 +32,19 @@ export const primaryNavLinks: NavLink[] = [
     icon: "FiGrid",
     // Children populated dynamically from active categories at render time
     children: [
-      { label: "Technology",      href: "/categories/technology" },
-      { label: "Programming",     href: "/categories/programming" },
+      { label: "Technology", href: "/categories/technology" },
+      { label: "Programming", href: "/categories/programming" },
       { label: "Web Development", href: "/categories/web-development" },
-      { label: "AI",              href: "/categories/ai" },
-      { label: "Startups",        href: "/categories/startups" },
-      { label: "Business",        href: "/categories/business" },
-      { label: "Finance",         href: "/categories/finance" },
-      { label: "Education",       href: "/categories/education" },
-      { label: "Career",          href: "/categories/career" },
-      { label: "Gaming",          href: "/categories/gaming" },
-      { label: "Entertainment",   href: "/categories/entertainment" },
-      { label: "Reviews",         href: "/categories/reviews" },
-      { label: "Thoughts",        href: "/categories/thoughts" },
+      { label: "AI", href: "/categories/ai" },
+      { label: "Startups", href: "/categories/startups" },
+      { label: "Business", href: "/categories/business" },
+      { label: "Finance", href: "/categories/finance" },
+      { label: "Education", href: "/categories/education" },
+      { label: "Career", href: "/categories/career" },
+      { label: "Gaming", href: "/categories/gaming" },
+      { label: "Entertainment", href: "/categories/entertainment" },
+      { label: "Reviews", href: "/categories/reviews" },
+      { label: "Thoughts", href: "/categories/thoughts" },
     ],
   },
   {
@@ -97,37 +97,37 @@ export const footerNav = {
   platform: {
     title: "Platform",
     links: [
-      { label: "Home",       href: "/" },
-      { label: "Trending",   href: "/trending" },
-      { label: "Latest",     href: "/latest" },
+      { label: "Home", href: "/" },
+      { label: "Trending", href: "/trending" },
+      { label: "Latest", href: "/latest" },
       { label: "Categories", href: "/categories" },
-      { label: "Thoughts",   href: "/thoughts" },
+      { label: "Thoughts", href: "/thoughts" },
     ],
   },
   company: {
     title: "Company",
     links: [
-      { label: "About",   href: "/about" },
+      { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],
   },
   legal: {
     title: "Legal",
     links: [
-      { label: "Privacy Policy",  href: "/privacy-policy" },
-      { label: "Terms of Use",    href: "/terms" },
-      { label: "Cookies Policy",  href: "/cookies-policy" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Use", href: "/terms" },
+      { label: "Cookies Policy", href: "/cookies-policy" },
     ],
   },
   categories: {
     title: "Explore",
     links: [
-      { label: "Technology",    href: "/categories/technology" },
-      { label: "Programming",   href: "/categories/programming" },
-      { label: "AI",            href: "/categories/ai" },
-      { label: "Startups",      href: "/categories/startups" },
-      { label: "Finance",       href: "/categories/finance" },
-      { label: "Gaming",        href: "/categories/gaming" },
+      { label: "Technology", href: "/categories/technology" },
+      { label: "Programming", href: "/categories/programming" },
+      { label: "AI", href: "/categories/ai" },
+      { label: "Startups", href: "/categories/startups" },
+      { label: "Finance", href: "/categories/finance" },
+      { label: "Gaming", href: "/categories/gaming" },
     ],
   },
 };
@@ -142,11 +142,18 @@ export interface Breadcrumb {
 }
 
 /** Build breadcrumb trail for category pages */
-export function getCategoryBreadcrumb(categoryName: string, categorySlug: string): Breadcrumb[] {
+export function getCategoryBreadcrumb(
+  categoryName: string,
+  categorySlug: string,
+): Breadcrumb[] {
   return [
     { label: "Home", href: "/" },
     { label: "Categories", href: "/categories" },
-    { label: categoryName, href: `/categories/${categorySlug}`, isActive: true },
+    {
+      label: categoryName,
+      href: `/categories/${categorySlug}`,
+      isActive: true,
+    },
   ];
 }
 
@@ -154,7 +161,7 @@ export function getCategoryBreadcrumb(categoryName: string, categorySlug: string
 export function getPostBreadcrumb(
   categoryName: string,
   categorySlug: string,
-  postTitle: string
+  postTitle: string,
 ): Breadcrumb[] {
   return [
     { label: "Home", href: "/" },

@@ -51,10 +51,12 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(0, 0, 0, 0.60) 50%,
-      rgba(0, 0, 0, 0.20) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
 }
 
 /* ── Content ── */
@@ -202,7 +204,7 @@
   align-items: center;
   gap: 4px;
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.60);
+  color: rgba(255, 255, 255, 0.6);
   white-space: nowrap;
   background: none;
   border: none;

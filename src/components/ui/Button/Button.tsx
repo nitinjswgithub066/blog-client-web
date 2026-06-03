@@ -31,7 +31,7 @@ export default function Button({
         styles[size],
         fullWidth && styles.fullWidth,
         isLoading && styles.loading,
-        className
+        className,
       )}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
@@ -43,7 +43,9 @@ export default function Button({
         leftIcon && <span className={styles.icon}>{leftIcon}</span>
       )}
       {children && <span>{children}</span>}
-      {!isLoading && rightIcon && <span className={styles.icon}>{rightIcon}</span>}
+      {!isLoading && rightIcon && (
+        <span className={styles.icon}>{rightIcon}</span>
+      )}
     </button>
   );
 }

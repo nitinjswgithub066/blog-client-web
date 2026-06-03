@@ -7,7 +7,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Latest Articles",
-  description: "Browse all the latest articles published on VexiraHub — fresh content every day.",
+  description:
+    "Browse all the latest articles published on VexiraHub — fresh content every day.",
 };
 
 export default function LatestPage() {
@@ -21,7 +22,8 @@ export default function LatestPage() {
           </div>
           <h1 className={styles.pageTitle}>Latest Articles</h1>
           <p className={styles.pageSubtitle}>
-            Fresh content from our editorial team — published daily across all topics.
+            Fresh content from our editorial team — published daily across all
+            topics.
           </p>
         </header>
 

@@ -5,7 +5,14 @@ import { FiClock, FiEye, FiCalendar, FiArrowLeft } from "react-icons/fi";
 import Badge from "@/components/ui/Badge";
 import Comments from "@/components/ui/Comments/Comments";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
-import { getCategoryGradientBg, formatDate, formatNumber, formatReadingTime, getInitials, absoluteUrl } from "@/lib/utils";
+import {
+  getCategoryGradientBg,
+  formatDate,
+  formatNumber,
+  formatReadingTime,
+  getInitials,
+  absoluteUrl,
+} from "@/lib/utils";
 import { getCategoryRoute } from "@/lib/routes";
 import ShareButtons from "./ShareButtons";
 import styles from "./page.module.css";
@@ -18,7 +25,9 @@ export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
@@ -51,7 +60,10 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className={styles.hero} style={{ background: gradient }}>
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <Link href={getCategoryRoute(post.category.slug)} className={styles.backLink}>
+            <Link
+              href={getCategoryRoute(post.category.slug)}
+              className={styles.backLink}
+            >
               <FiArrowLeft aria-hidden="true" />
               Back to {post.category.name}
             </Link>
@@ -116,7 +128,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div className={styles.tags}>
                 <span className={styles.tagsLabel}>Tags:</span>
                 {post.tags.map((tag) => (
-                  <span key={tag.id} className={styles.tag}>#{tag.name}</span>
+                  <span key={tag.id} className={styles.tag}>
+                    #{tag.name}
+                  </span>
                 ))}
               </div>
             )}
@@ -129,7 +143,6 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
       </article>
-
     </>
   );
 }

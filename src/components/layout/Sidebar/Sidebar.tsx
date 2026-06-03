@@ -16,7 +16,10 @@ interface SidebarProps {
 const trendingPosts = getTrendingPosts(5);
 const topCategories = categories.slice(0, 6);
 
-export default function Sidebar({ className, hideTrending = false }: SidebarProps) {
+export default function Sidebar({
+  className,
+  hideTrending = false,
+}: SidebarProps) {
   return (
     <aside className={cn(styles.sidebar, className)} aria-label="Sidebar">
       {/* Trending widget */}

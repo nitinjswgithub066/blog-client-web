@@ -51,7 +51,7 @@ export default function InfiniteScrollList({
           loadMorePosts();
         }
       },
-      { rootMargin: "100px" }
+      { rootMargin: "100px" },
     );
 
     observer.observe(currentLoader);
@@ -79,13 +79,13 @@ export default function InfiniteScrollList({
                 key={i}
                 className={cn(
                   styles.skeletonCard,
-                  orientation === "horizontal" && styles.skeletonCardHorizontal
+                  orientation === "horizontal" && styles.skeletonCardHorizontal,
                 )}
               >
                 <div
                   className={cn(
                     styles.skeletonImage,
-                    orientation === "horizontal" && styles.skeletonImageHidden
+                    orientation === "horizontal" && styles.skeletonImageHidden,
                   )}
                 />
                 <div className={styles.skeletonContent}>

@@ -7,7 +7,11 @@ interface LoaderProps {
   label?: string; // accessibility label
 }
 
-export default function Loader({ size = "md", className, label = "Loading..." }: LoaderProps) {
+export default function Loader({
+  size = "md",
+  className,
+  label = "Loading...",
+}: LoaderProps) {
   return (
     <div
       className={cn(styles.wrapper, className)}

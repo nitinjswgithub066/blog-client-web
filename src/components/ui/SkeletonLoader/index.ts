@@ -1,1 +1,6 @@
-export { default, BlogCardSkeleton, TrendingCardSkeleton, CategoryCardSkeleton } from "./SkeletonLoader";
+export {
+  default,
+  BlogCardSkeleton,
+  TrendingCardSkeleton,
+  CategoryCardSkeleton,
+} from "./SkeletonLoader";

@@ -10,17 +10,24 @@ import styles from "./HeroSection.module.css";
 import type { Variants } from "framer-motion";
 
 const fadeUp: Variants = {
-  hidden:  { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
   }),
-  exit: { opacity: 0, y: -24, transition: { duration: 0.3 } }
+  exit: { opacity: 0, y: -24, transition: { duration: 0.3 } },
 };
 
 export default function HeroSection() {
   const hero = getHeroPost();
-  const secondary = getFeaturedPosts(3).filter(p => p.id !== hero?.id).slice(0, 2);
+  const secondary = getFeaturedPosts(3)
+    .filter((p) => p.id !== hero?.id)
+    .slice(0, 2);
 
   if (!hero) return null;
 
@@ -89,7 +96,10 @@ export default function HeroSection() {
                 <Link href={ROUTES.LATEST} className={styles.ctaCard}>
                   <span className={styles.ctaText}>
                     Explore all articles
-                    <FiArrowRight className={styles.ctaArrow} aria-hidden="true" />
+                    <FiArrowRight
+                      className={styles.ctaArrow}
+                      aria-hidden="true"
+                    />
                   </span>
                 </Link>
               </motion.div>

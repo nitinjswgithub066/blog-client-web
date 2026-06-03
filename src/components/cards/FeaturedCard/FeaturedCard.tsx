@@ -3,8 +3,11 @@ import { FiEye, FiArrowRight } from "react-icons/fi";
 import Badge from "@/components/ui/Badge";
 import ShareModalButton from "@/components/cards/BlogCard/ShareModalButton";
 import {
-  formatDate, formatNumber,
-  getCategoryGradientBg, getInitials, cn
+  formatDate,
+  formatNumber,
+  getCategoryGradientBg,
+  getInitials,
+  cn,
 } from "@/lib/utils";
 import { getPostRoute } from "@/lib/routes";
 import type { Post } from "@/types";
@@ -54,9 +57,7 @@ export default function FeaturedCard({
         </h2>
 
         {/* Excerpt */}
-        {size === "hero" && (
-          <p className={styles.excerpt}>{post.excerpt}</p>
-        )}
+        {size === "hero" && <p className={styles.excerpt}>{post.excerpt}</p>}
 
         {/* Footer */}
         <div className={styles.footer}>

@@ -25,9 +25,13 @@ export default function LatestPostsSection({
           <div className={styles.header}>
             <div className={styles.titleGroup}>
               <FiClock className={styles.icon} aria-hidden="true" />
-              <h2 id="latest-heading" className={styles.title}>Latest Articles</h2>
+              <h2 id="latest-heading" className={styles.title}>
+                Latest Articles
+              </h2>
             </div>
-            <Link href={ROUTES.LATEST} className={styles.viewAll}>View all</Link>
+            <Link href={ROUTES.LATEST} className={styles.viewAll}>
+              View all
+            </Link>
           </div>
 
           {/* Grid */}

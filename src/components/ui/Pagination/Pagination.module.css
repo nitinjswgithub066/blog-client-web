@@ -27,7 +27,7 @@
   cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth),
     border-color var(--duration-fast) var(--ease-smooth);
 }
 

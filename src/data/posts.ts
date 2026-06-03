@@ -35,26 +35,30 @@ const aisha = vexira;
 // Shared tag pool
 // -----------------------------------------------------------------------------
 const tags = {
-  react:        { id: "tag-react",        name: "React",        slug: "react" },
-  nextjs:       { id: "tag-nextjs",       name: "Next.js",      slug: "nextjs" },
-  typescript:   { id: "tag-typescript",   name: "TypeScript",   slug: "typescript" },
-  nodejs:       { id: "tag-nodejs",       name: "Node.js",      slug: "nodejs" },
-  python:       { id: "tag-python",       name: "Python",       slug: "python" },
-  ai:           { id: "tag-ai",           name: "AI",           slug: "ai" },
-  llm:          { id: "tag-llm",          name: "LLM",          slug: "llm" },
-  gpt:          { id: "tag-gpt",          name: "GPT",          slug: "gpt" },
-  startup:      { id: "tag-startup",      name: "Startup",      slug: "startup" },
-  funding:      { id: "tag-funding",      name: "Funding",      slug: "funding" },
-  productivity: { id: "tag-productivity", name: "Productivity", slug: "productivity" },
-  career:       { id: "tag-career",       name: "Career",       slug: "career" },
-  investing:    { id: "tag-investing",    name: "Investing",    slug: "investing" },
-  crypto:       { id: "tag-crypto",       name: "Crypto",       slug: "crypto" },
-  webdev:       { id: "tag-webdev",       name: "Web Dev",      slug: "webdev" },
-  css:          { id: "tag-css",          name: "CSS",          slug: "css" },
-  gaming:       { id: "tag-gaming",       name: "Gaming",       slug: "gaming" },
-  review:       { id: "tag-review",       name: "Review",       slug: "review" },
-  opinion:      { id: "tag-opinion",      name: "Opinion",      slug: "opinion" },
-  learning:     { id: "tag-learning",     name: "Learning",     slug: "learning" },
+  react: { id: "tag-react", name: "React", slug: "react" },
+  nextjs: { id: "tag-nextjs", name: "Next.js", slug: "nextjs" },
+  typescript: { id: "tag-typescript", name: "TypeScript", slug: "typescript" },
+  nodejs: { id: "tag-nodejs", name: "Node.js", slug: "nodejs" },
+  python: { id: "tag-python", name: "Python", slug: "python" },
+  ai: { id: "tag-ai", name: "AI", slug: "ai" },
+  llm: { id: "tag-llm", name: "LLM", slug: "llm" },
+  gpt: { id: "tag-gpt", name: "GPT", slug: "gpt" },
+  startup: { id: "tag-startup", name: "Startup", slug: "startup" },
+  funding: { id: "tag-funding", name: "Funding", slug: "funding" },
+  productivity: {
+    id: "tag-productivity",
+    name: "Productivity",
+    slug: "productivity",
+  },
+  career: { id: "tag-career", name: "Career", slug: "career" },
+  investing: { id: "tag-investing", name: "Investing", slug: "investing" },
+  crypto: { id: "tag-crypto", name: "Crypto", slug: "crypto" },
+  webdev: { id: "tag-webdev", name: "Web Dev", slug: "webdev" },
+  css: { id: "tag-css", name: "CSS", slug: "css" },
+  gaming: { id: "tag-gaming", name: "Gaming", slug: "gaming" },
+  review: { id: "tag-review", name: "Review", slug: "review" },
+  opinion: { id: "tag-opinion", name: "Opinion", slug: "opinion" },
+  learning: { id: "tag-learning", name: "Learning", slug: "learning" },
 };
 
 // -----------------------------------------------------------------------------
@@ -65,7 +69,8 @@ export const posts: Post[] = [
   {
     id: "post-001",
     slug: "apple-vision-pro-spatial-computing-review-2026",
-    title: "Apple Vision Pro in 2026: Is Spatial Computing Finally Ready for Everyone?",
+    title:
+      "Apple Vision Pro in 2026: Is Spatial Computing Finally Ready for Everyone?",
     excerpt:
       "A year after launch, we put Vision Pro through real-world tests — work, creativity, entertainment — to answer the question everyone is asking.",
     content: `
@@ -104,14 +109,20 @@ export const posts: Post[] = [
       metaTitle: "Apple Vision Pro 2026 Review — Is Spatial Computing Ready?",
       metaDescription:
         "A deep-dive review of Apple Vision Pro in 2026: hardware improvements, visionOS 2.0, app ecosystem gaps, and who should actually buy it.",
-      keywords: ["apple vision pro", "spatial computing", "visionOS", "xr headset review"],
+      keywords: [
+        "apple vision pro",
+        "spatial computing",
+        "visionOS",
+        "xr headset review",
+      ],
     },
   },
 
   {
     id: "post-002",
     slug: "quantum-computing-explained-simply-2026",
-    title: "Quantum Computing Explained Simply: What It Means for Software Developers",
+    title:
+      "Quantum Computing Explained Simply: What It Means for Software Developers",
     excerpt:
       "Quantum computers are no longer just lab experiments. Here's what every developer needs to understand about the technology that's coming for classical computing.",
     content: `
@@ -154,7 +165,8 @@ export const posts: Post[] = [
   {
     id: "post-003",
     slug: "typescript-5-new-features-complete-guide",
-    title: "TypeScript 5: Every New Feature That Actually Matters (With Examples)",
+    title:
+      "TypeScript 5: Every New Feature That Actually Matters (With Examples)",
     excerpt:
       "Decorators, const type parameters, variadic tuple improvements, and more. Here's the complete guide to what's new and how to use it in real projects.",
     content: `
@@ -269,7 +281,8 @@ const result = first(['a', 'b', 'c']);
   {
     id: "post-005",
     slug: "css-container-queries-complete-guide-2026",
-    title: "CSS Container Queries: The Feature That Changes How We Think About Components",
+    title:
+      "CSS Container Queries: The Feature That Changes How We Think About Components",
     excerpt:
       "Container queries have been supported in all major browsers for over a year. Here's why they matter and how to start using them today.",
     content: `
@@ -499,7 +512,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-22T08:00:00Z",
     readingTime: 10,
     featuredImage: "",
-    featuredImageAlt: "Startup founder presenting to investors in a modern office",
+    featuredImageAlt:
+      "Startup founder presenting to investors in a modern office",
     isFeatured: false,
     isTrending: true,
     isThought: false,
@@ -510,7 +524,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-010",
     slug: "10-startups-to-watch-in-2026",
-    title: "10 Startups to Watch in 2026: The Next Wave of Category-Defining Companies",
+    title:
+      "10 Startups to Watch in 2026: The Next Wave of Category-Defining Companies",
     excerpt:
       "From AI infrastructure to climate tech, these are the startups building the platforms that will matter in the next decade.",
     content: `
@@ -551,7 +566,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-011",
     slug: "remote-first-company-culture-how-to-build-it-right",
-    title: "Remote-First Company Culture: How to Build It Right (Not Just Remote-Tolerated)",
+    title:
+      "Remote-First Company Culture: How to Build It Right (Not Just Remote-Tolerated)",
     excerpt:
       "Most companies that call themselves 'remote-first' are actually 'remote-tolerated.' Here's how the best distributed teams actually operate.",
     content: `
@@ -590,7 +606,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-012",
     slug: "investing-for-beginners-2026-complete-guide",
-    title: "Investing for Beginners in 2026: Where to Start When You Have ₹10,000",
+    title:
+      "Investing for Beginners in 2026: Where to Start When You Have ₹10,000",
     excerpt:
       "Starting investing feels overwhelming. It doesn't have to be. Here's the clear, no-BS guide to getting started with a small amount of money in 2026.",
     content: `
@@ -630,7 +647,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-013",
     slug: "crypto-in-2026-what-survived-what-died",
-    title: "Crypto in 2026: What Survived, What Died, and What Actually Has a Future",
+    title:
+      "Crypto in 2026: What Survived, What Died, and What Actually Has a Future",
     excerpt:
       "After the cycles, the scandals, and the regulation — here's an honest assessment of the crypto landscape in 2026.",
     content: `
@@ -672,7 +690,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-014",
     slug: "best-free-courses-to-learn-programming-2026",
-    title: "The 12 Best Free Courses to Learn Programming in 2026 (Vetted by Developers)",
+    title:
+      "The 12 Best Free Courses to Learn Programming in 2026 (Vetted by Developers)",
     excerpt:
       "The internet is overflowing with programming courses. These 12 are the ones that actually deliver results, vetted by working developers.",
     content: `
@@ -701,7 +720,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-11T09:00:00Z",
     readingTime: 10,
     featuredImage: "",
-    featuredImageAlt: "Student learning programming on a laptop with course material",
+    featuredImageAlt:
+      "Student learning programming on a laptop with course material",
     isFeatured: false,
     isTrending: false,
     isThought: false,
@@ -834,7 +854,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-018",
     slug: "macbook-pro-m4-max-review-2026",
-    title: "MacBook Pro M4 Max Review: The Best Laptop Ever Made (For Some People)",
+    title:
+      "MacBook Pro M4 Max Review: The Best Laptop Ever Made (For Some People)",
     excerpt:
       "The M4 Max chip delivers jaw-dropping performance. But at this price, who actually needs it? An honest review for developers and creators.",
     content: `
@@ -874,7 +895,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-019",
     slug: "cursor-ai-code-editor-review-worth-it",
-    title: "Cursor AI Code Editor Review: Is It Worth the Subscription in 2026?",
+    title:
+      "Cursor AI Code Editor Review: Is It Worth the Subscription in 2026?",
     excerpt:
       "Cursor has become the most talked-about tool in developer circles. After 3 months of daily use, here's our verdict.",
     content: `
@@ -976,7 +998,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-13T07:00:00Z",
     readingTime: 5,
     featuredImage: "",
-    featuredImageAlt: "Solo developer working late at night with warm desk lamp",
+    featuredImageAlt:
+      "Solo developer working late at night with warm desk lamp",
     isFeatured: true,
     isTrending: false,
     isThought: true,
@@ -1062,7 +1085,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-07T09:00:00Z",
     readingTime: 7,
     featuredImage: "",
-    featuredImageAlt: "Python and JavaScript logos side by side on a coding background",
+    featuredImageAlt:
+      "Python and JavaScript logos side by side on a coding background",
     isFeatured: false,
     isTrending: false,
     isThought: false,
@@ -1073,7 +1097,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-024",
     slug: "freelancing-developer-guide-2026-how-to-start",
-    title: "The Complete Freelancing Guide for Developers in 2026: From Zero to First Client",
+    title:
+      "The Complete Freelancing Guide for Developers in 2026: From Zero to First Client",
     excerpt:
       "Freelancing as a developer has never been more accessible — or more competitive. Here's the step-by-step guide to building a sustainable freelance practice.",
     content: `
@@ -1102,7 +1127,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-03T09:00:00Z",
     readingTime: 11,
     featuredImage: "",
-    featuredImageAlt: "Freelance developer working from a coffee shop with laptop",
+    featuredImageAlt:
+      "Freelance developer working from a coffee shop with laptop",
     isFeatured: false,
     isTrending: false,
     isThought: false,
@@ -1113,7 +1139,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
   {
     id: "post-025",
     slug: "notion-vs-obsidian-which-is-better-for-developers",
-    title: "Notion vs Obsidian: Which Knowledge Tool Is Better for Developers in 2026?",
+    title:
+      "Notion vs Obsidian: Which Knowledge Tool Is Better for Developers in 2026?",
     excerpt:
       "After 6 months switching between both tools, here's an honest comparison of Notion and Obsidian for developer workflows, note-taking, and knowledge management.",
     content: `
@@ -1179,7 +1206,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
     publishedAt: "2026-05-29T07:00:00Z",
     readingTime: 7,
     featuredImage: "",
-    featuredImageAlt: "Developer and AI working together at a futuristic workstation",
+    featuredImageAlt:
+      "Developer and AI working together at a futuristic workstation",
     isFeatured: true,
     isTrending: true,
     isThought: true,
@@ -1194,7 +1222,8 @@ tools = [DuckDuckGoSearchRun()]</code></pre>
 
 /** All posts sorted by date (newest first) */
 export const allPosts = [...posts].sort(
-  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  (a, b) =>
+    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
 );
 
 /** Featured posts */
@@ -1214,23 +1243,29 @@ export function getPostBySlug(slug: string): Post | undefined {
 }
 
 /** Get posts by category slug with optional limit */
-export function getPostsByCategory(categorySlug: string, limit?: number): Post[] {
+export function getPostsByCategory(
+  categorySlug: string,
+  limit?: number,
+): Post[] {
   const filtered = allPosts.filter((p) => p.category.slug === categorySlug);
   return limit !== undefined ? filtered.slice(0, limit) : filtered;
 }
 
 /** Get related posts (same category, excluding current) */
-export function getRelatedPosts(postId: string, categorySlug: string, limit = 3): Post[] {
+export function getRelatedPosts(
+  postId: string,
+  categorySlug: string,
+  limit = 3,
+): Post[] {
   return allPosts
     .filter((p) => p.id !== postId && p.category.slug === categorySlug)
     .slice(0, limit);
 }
 
-
 /** Get categories that have at least one post */
 export function getActiveCategories() {
   const activeSlugs = new Set(posts.map((p) => p.category.slug));
-  return categories.filter(c => activeSlugs.has(c.slug));
+  return categories.filter((c) => activeSlugs.has(c.slug));
 }
 
 /** Latest posts with optional limit */
@@ -1248,23 +1283,29 @@ export function searchPosts(query: string): Post[] {
       p.excerpt.toLowerCase().includes(q) ||
       p.category.name.toLowerCase().includes(q) ||
       p.tags.some((t) => t.name.toLowerCase().includes(q)) ||
-      p.author.name.toLowerCase().includes(q)
+      p.author.name.toLowerCase().includes(q),
   );
 }
 /** Get all posts sorted by date */
-export function getAllPosts(): Post[] { return allPosts; }
+export function getAllPosts(): Post[] {
+  return allPosts;
+}
 
 /** Get featured posts with optional limit */
-export function getFeaturedPosts(limit = 3): Post[] { return featuredPosts.slice(0, limit); }
+export function getFeaturedPosts(limit = 3): Post[] {
+  return featuredPosts.slice(0, limit);
+}
 
 /** Get trending posts with optional limit */
-export function getTrendingPosts(limit = 8): Post[] { 
+export function getTrendingPosts(limit = 8): Post[] {
   // Dynamic mock logic: Sort by views
   return [...allPosts].sort((a, b) => b.views - a.views).slice(0, limit);
 }
 
 /** Get thought posts */
-export function getThoughtPosts(): Post[] { return thoughtsPosts; }
+export function getThoughtPosts(): Post[] {
+  return thoughtsPosts;
+}
 
 /** Get total views across all posts */
 export function getTotalViews(): number {
@@ -1281,9 +1322,9 @@ export function getHeroPost(): Post {
   // Logic: 1. Newest featured post, fallback to highest views, fallback to random
   const featured = getFeaturedPosts(1);
   if (featured.length > 0) return featured[0];
-  
+
   const trending = getTrendingPosts(1);
   if (trending.length > 0) return trending[0];
-  
+
   return allPosts[0];
 }

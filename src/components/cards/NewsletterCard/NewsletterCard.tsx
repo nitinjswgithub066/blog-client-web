@@ -11,7 +11,10 @@ interface NewsletterCardProps {
   variant?: "default" | "inline"; // "inline" = horizontal layout
 }
 
-export default function NewsletterCard({ className, variant = "default" }: NewsletterCardProps) {
+export default function NewsletterCard({
+  className,
+  variant = "default",
+}: NewsletterCardProps) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -59,8 +62,8 @@ export default function NewsletterCard({ className, variant = "default" }: Newsl
         <div>
           <h2 className={styles.title}>Stay in the loop</h2>
           <p className={styles.subtitle}>
-            Get the best articles on Technology, AI, Startups, and more — delivered weekly.
-            No spam. Unsubscribe anytime.
+            Get the best articles on Technology, AI, Startups, and more —
+            delivered weekly. No spam. Unsubscribe anytime.
           </p>
         </div>
       </div>

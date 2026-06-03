@@ -7,7 +7,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Thoughts",
-  description: "Short-form opinions, personal essays, and reflections from the VexiraHub team.",
+  description:
+    "Short-form opinions, personal essays, and reflections from the VexiraHub team.",
 };
 
 const posts = getThoughtPosts();
@@ -40,9 +41,13 @@ export default function ThoughtsPage() {
           </div>
         ) : (
           <div className={styles.empty}>
-            <span aria-hidden="true" className={styles.emptyIcon}>✍️</span>
+            <span aria-hidden="true" className={styles.emptyIcon}>
+              ✍️
+            </span>
             <h2 className={styles.emptyTitle}>Coming soon</h2>
-            <p className={styles.emptyText}>Personal thoughts and essays will appear here.</p>
+            <p className={styles.emptyText}>
+              Personal thoughts and essays will appear here.
+            </p>
           </div>
         )}
       </div>

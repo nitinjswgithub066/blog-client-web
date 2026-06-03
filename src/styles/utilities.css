@@ -12,7 +12,6 @@
   margin-inline: auto;
 }
 
-
 .container--narrow {
   max-width: var(--container-md);
   margin-inline: auto;
@@ -71,7 +70,8 @@
    -------------------------------------------------------------------------- */
 .glass {
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
 }
@@ -84,14 +84,18 @@
    Typography Utilities
    -------------------------------------------------------------------------- */
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient--warm {
-  background: linear-gradient(135deg, #F59E0B, #EF4444);
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -194,7 +198,12 @@
 }
 
 .overlay--dark-bottom {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
 }
 
 .overlay--dark-full {
@@ -258,7 +267,6 @@
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -273,10 +281,12 @@
    Skeleton shimmer utility
    -------------------------------------------------------------------------- */
 .skeleton {
-  background: linear-gradient(90deg,
-      var(--bg-elevated) 25%,
-      var(--bg-raised) 50%,
-      var(--bg-elevated) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated) 25%,
+    var(--bg-raised) 50%,
+    var(--bg-elevated) 75%
+  );
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
   border-radius: var(--radius-sm);

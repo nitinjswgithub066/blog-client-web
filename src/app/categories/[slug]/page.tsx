@@ -16,7 +16,9 @@ export async function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) return { title: "Category Not Found" };
@@ -63,9 +65,13 @@ export default async function CategoryPage({ params }: PageProps) {
                 {crumb.isActive ? (
                   <span className={styles.breadcrumbActive}>{crumb.label}</span>
                 ) : (
-                  <Link href={crumb.href} className={styles.breadcrumbLink}>{crumb.label}</Link>
+                  <Link href={crumb.href} className={styles.breadcrumbLink}>
+                    {crumb.label}
+                  </Link>
                 )}
-                {i < breadcrumbs.length - 1 && <span className={styles.breadcrumbSeparator}>/</span>}
+                {i < breadcrumbs.length - 1 && (
+                  <span className={styles.breadcrumbSeparator}>/</span>
+                )}
               </span>
             ))}
           </nav>
@@ -88,7 +94,9 @@ export default async function CategoryPage({ params }: PageProps) {
               </div>
             ) : (
               <div className={styles.empty}>
-                <p className={styles.emptyText}>No articles in this category yet. Check back soon!</p>
+                <p className={styles.emptyText}>
+                  No articles in this category yet. Check back soon!
+                </p>
               </div>
             )}
           </div>

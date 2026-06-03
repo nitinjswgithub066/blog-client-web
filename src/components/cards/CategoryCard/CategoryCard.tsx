@@ -45,9 +45,16 @@ const accentClassMap: Record<string, string> = {
   thoughts: styles.accentThoughts,
 };
 
-export default function CategoryCard({ category, postCount, className }: CategoryCardProps) {
-  const IconComponent = FiIcons[category.icon as FiIconName] as React.ComponentType<{ className?: string }>;
-  const gradientClass = gradientClassMap[category.slug] ?? styles.gradientDefault;
+export default function CategoryCard({
+  category,
+  postCount,
+  className,
+}: CategoryCardProps) {
+  const IconComponent = FiIcons[
+    category.icon as FiIconName
+  ] as React.ComponentType<{ className?: string }>;
+  const gradientClass =
+    gradientClassMap[category.slug] ?? styles.gradientDefault;
   const accentClass = accentClassMap[category.slug] ?? styles.accentDefault;
 
   return (

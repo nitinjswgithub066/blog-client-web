@@ -1,6 +1,7 @@
 .card {
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur))
+    saturate(var(--glass-saturate));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-2xl);
@@ -17,7 +18,11 @@
   content: "";
   position: absolute;
   inset: -50%;
-  background: radial-gradient(circle at 60% 40%, var(--accent-glow), transparent 60%);
+  background: radial-gradient(
+    circle at 60% 40%,
+    var(--accent-glow),
+    transparent 60%
+  );
   pointer-events: none;
 }
 
@@ -85,7 +90,7 @@
 
 .successIcon {
   font-size: 2rem;
-  color: #10B981;
+  color: #10b981;
   flex-shrink: 0;
 }
 

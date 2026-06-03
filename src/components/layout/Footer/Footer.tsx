@@ -1,13 +1,23 @@
 import Link from "next/link";
-import { FiGithub, FiTwitter, FiLinkedin, FiRss, FiHeart } from "react-icons/fi";
+import {
+  FiGithub,
+  FiTwitter,
+  FiLinkedin,
+  FiRss,
+  FiHeart,
+} from "react-icons/fi";
 import { footerNav } from "@/data/navigation";
 import styles from "./Footer.module.css";
 
 const socialLinks = [
-  { href: "https://github.com/vexirahub",   icon: FiGithub,   label: "GitHub"   },
-  { href: "https://twitter.com/vexirahub",  icon: FiTwitter,  label: "Twitter"  },
-  { href: "https://linkedin.com/vexirahub", icon: FiLinkedin, label: "LinkedIn" },
-  { href: "/feed.xml",                       icon: FiRss,      label: "RSS Feed" },
+  { href: "https://github.com/vexirahub", icon: FiGithub, label: "GitHub" },
+  { href: "https://twitter.com/vexirahub", icon: FiTwitter, label: "Twitter" },
+  {
+    href: "https://linkedin.com/vexirahub",
+    icon: FiLinkedin,
+    label: "LinkedIn",
+  },
+  { href: "/feed.xml", icon: FiRss, label: "RSS Feed" },
 ];
 
 export default function Footer() {
@@ -23,7 +33,8 @@ export default function Footer() {
             <span className={styles.brandName}>VexiraHub</span>
           </Link>
           <p className={styles.brandTagline}>
-            Your premium source for Technology, AI, Startups, and inspiring stories — curated for curious minds.
+            Your premium source for Technology, AI, Startups, and inspiring
+            stories — curated for curious minds.
           </p>
           {/* Socials */}
           <div className={styles.socials}>
@@ -34,7 +45,9 @@ export default function Footer() {
                 className={styles.socialLink}
                 aria-label={label}
                 target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={
+                  href.startsWith("http") ? "noopener noreferrer" : undefined
+                }
               >
                 <Icon aria-hidden="true" />
               </a>
@@ -68,12 +81,19 @@ export default function Footer() {
       <div className={styles.bottom}>
         <p className={styles.copyright}>
           © {year} VexiraHub. All rights reserved. Built with{" "}
-          <FiHeart className={styles.heartIcon} aria-label="love" /> by the VexiraHub team.
+          <FiHeart className={styles.heartIcon} aria-label="love" /> by the
+          VexiraHub team.
         </p>
         <div className={styles.bottomLinks}>
-          <Link href="/privacy-policy" className={styles.bottomLink}>Privacy</Link>
-          <Link href="/terms"          className={styles.bottomLink}>Terms</Link>
-          <Link href="/cookies-policy" className={styles.bottomLink}>Cookies</Link>
+          <Link href="/privacy-policy" className={styles.bottomLink}>
+            Privacy
+          </Link>
+          <Link href="/terms" className={styles.bottomLink}>
+            Terms
+          </Link>
+          <Link href="/cookies-policy" className={styles.bottomLink}>
+            Cookies
+          </Link>
         </div>
       </div>
     </footer>

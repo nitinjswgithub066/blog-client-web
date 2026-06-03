@@ -87,8 +87,8 @@ export default function Dropdown({
             className={cn(styles.menu, styles[align])}
             role="menu"
             initial={{ opacity: 0, y: -8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0,  scale: 1    }}
-            exit={{   opacity: 0, y: -6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
           >
             {items.map((item, i) => (
@@ -103,7 +103,9 @@ export default function Dropdown({
                     role="menuitem"
                     onClick={() => setOpen(false)}
                   >
-                    {item.icon && <span className={styles.itemIcon}>{item.icon}</span>}
+                    {item.icon && (
+                      <span className={styles.itemIcon}>{item.icon}</span>
+                    )}
                     {item.label}
                   </a>
                 ) : (
@@ -113,7 +115,9 @@ export default function Dropdown({
                     role="menuitem"
                     onClick={() => handleItemClick(item)}
                   >
-                    {item.icon && <span className={styles.itemIcon}>{item.icon}</span>}
+                    {item.icon && (
+                      <span className={styles.itemIcon}>{item.icon}</span>
+                    )}
                     {item.label}
                   </button>
                 )}

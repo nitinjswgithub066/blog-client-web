@@ -47,7 +47,7 @@ export default function Comments() {
   // Total comments including replies
   const totalComments = comments.reduce(
     (acc, comment) => acc + 1 + (comment.replies?.length || 0),
-    0
+    0,
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -101,9 +101,14 @@ export default function Comments() {
   );
 
   return (
-    <section className={styles.commentsWrapper} aria-labelledby="comments-heading">
+    <section
+      className={styles.commentsWrapper}
+      aria-labelledby="comments-heading"
+    >
       <div className={styles.commentsHeader}>
-        <h3 id="comments-heading" className={styles.commentsTitle}>Comments</h3>
+        <h3 id="comments-heading" className={styles.commentsTitle}>
+          Comments
+        </h3>
         <span className={styles.commentsCount}>{totalComments}</span>
       </div>
 
@@ -129,7 +134,11 @@ export default function Comments() {
           required
         />
         <div className={styles.formFooter}>
-          <Button type="submit" variant="primary" disabled={isSubmitting || !name || !text}>
+          <Button
+            type="submit"
+            variant="primary"
+            disabled={isSubmitting || !name || !text}
+          >
             {isSubmitting ? "Posting..." : "Post Comment"}
           </Button>
         </div>
@@ -141,7 +150,13 @@ export default function Comments() {
             <CommentNode key={comment.id} comment={comment} />
           ))
         ) : (
-          <p style={{ color: "var(--text-muted)", textAlign: "center", padding: "2rem 0" }}>
+          <p
+            style={{
+              color: "var(--text-muted)",
+              textAlign: "center",
+              padding: "2rem 0",
+            }}
+          >
             No comments yet. Be the first to share your thoughts!
           </p>
         )}

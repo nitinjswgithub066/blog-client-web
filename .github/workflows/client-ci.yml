@@ -1,0 +1,50 @@
+name: Blog Client CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  quality-check:
+    name: Install, Test, and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # This step checks out the code from the repository so the workflow can access it
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+        # This step sets up the Node.js environment (v20) and caches npm dependencies to speed up future runs
+
+      - name: Install dependencies
+        run: npm ci
+        # Clean installation of project dependencies based on the package-lock.json
+
+      - name: Run lint check
+        run: npm run lint
+        # Runs the linting script to catch syntax and style issues
+
+      - name: Run TypeScript type-check
+        run: npm run type-check
+        # Runs the TypeScript compiler to check for type errors without emitting compiled files
+
+      - name: Run format check
+        run: npm run format:check
+        # Checks if the code formatting adheres to Prettier rules
+
+      - name: Run tests
+        run: npm run test
+        # Executes the test suite (if any) to ensure code correctness
+
+      - name: Build project
+        run: npm run build
+        # Builds the Next.js project to verify that it compiles correctly for production

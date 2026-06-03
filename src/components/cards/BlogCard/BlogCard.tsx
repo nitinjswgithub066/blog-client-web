@@ -36,7 +36,8 @@ export default function BlogCard({
   orientation = "vertical",
   className,
 }: BlogCardProps) {
-  const gradientClass = gradientClassMap[post.category.slug] ?? styles.gradientDefault;
+  const gradientClass =
+    gradientClassMap[post.category.slug] ?? styles.gradientDefault;
 
   return (
     <article className={cn(styles.card, styles[orientation], className)}>
@@ -97,12 +98,17 @@ export default function BlogCard({
             </div>
             <div className={styles.authorInfo}>
               <span className={styles.authorName}>{post.author.name}</span>
-              <span className={styles.date}>{formatDate(post.publishedAt)}</span>
+              <span className={styles.date}>
+                {formatDate(post.publishedAt)}
+              </span>
             </div>
           </div>
 
           <div className={styles.meta}>
-            <ShareModalButton title={post.title} url={getPostRoute(post.slug)} />
+            <ShareModalButton
+              title={post.title}
+              url={getPostRoute(post.slug)}
+            />
             <span className={styles.metaItem}>
               <FiEye aria-hidden="true" />
               {formatNumber(post.views)}

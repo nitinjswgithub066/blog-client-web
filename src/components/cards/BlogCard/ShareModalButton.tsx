@@ -2,7 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { FiShare2, FiX, FiTwitter, FiLinkedin, FiFacebook, FiCopy, FiCheck } from "react-icons/fi";
+import {
+  FiShare2,
+  FiX,
+  FiTwitter,
+  FiLinkedin,
+  FiFacebook,
+  FiCopy,
+  FiCheck,
+} from "react-icons/fi";
 import styles from "./ShareModalButton.module.css";
 
 interface ShareModalButtonProps {
@@ -12,7 +20,12 @@ interface ShareModalButtonProps {
   showLabel?: boolean;
 }
 
-export default function ShareModalButton({ title, url: pathUrl, className, showLabel }: ShareModalButtonProps) {
+export default function ShareModalButton({
+  title,
+  url: pathUrl,
+  className,
+  showLabel,
+}: ShareModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const isBrowser = typeof window !== "undefined";
@@ -24,14 +37,19 @@ export default function ShareModalButton({ title, url: pathUrl, className, showL
   // Lock scroll when modal is open
   useEffect(() => {
     if (triggerRef.current) {
-      triggerRef.current.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      triggerRef.current.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false",
+      );
     }
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const openModal = (e: React.MouseEvent) => {
@@ -66,23 +84,40 @@ export default function ShareModalButton({ title, url: pathUrl, className, showL
     const encodedTitle = encodeURIComponent(title);
     let shareUrl = "";
 
-    if (platform === "twitter") shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
-    if (platform === "linkedin") shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
-    if (platform === "facebook") shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    if (platform === "twitter")
+      shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+    if (platform === "linkedin")
+      shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
+    if (platform === "facebook")
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
 
     if (shareUrl) window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
 
   const modal = isOpen ? (
-    <div className={styles.overlay} onClick={closeModal} role="dialog" aria-modal="true" aria-label="Share article">
+    <div
+      className={styles.overlay}
+      onClick={closeModal}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Share article"
+    >
       <div
         className={styles.modal}
-        onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }}
       >
         {/* Header */}
         <div className={styles.modalHeader}>
           <span className={styles.modalTitle}>Share Article</span>
-          <button type="button" className={styles.closeBtn} onClick={closeModal} aria-label="Close share menu">
+          <button
+            type="button"
+            className={styles.closeBtn}
+            onClick={closeModal}
+            aria-label="Close share menu"
+          >
             <FiX aria-hidden="true" />
           </button>
         </div>
@@ -99,23 +134,46 @@ export default function ShareModalButton({ title, url: pathUrl, className, showL
           {/* Social icons row */}
           <div className={styles.socialLabel}>Share via</div>
           <div className={styles.socialRow}>
-            <button type="button" className={`${styles.socialBtn} ${styles.twitter}`} onClick={(e) => shareSocial(e, "twitter")} aria-label="Share on Twitter / X">
+            <button
+              type="button"
+              className={`${styles.socialBtn} ${styles.twitter}`}
+              onClick={(e) => shareSocial(e, "twitter")}
+              aria-label="Share on Twitter / X"
+            >
               <FiTwitter aria-hidden="true" />
               <span>Twitter</span>
             </button>
-            <button type="button" className={`${styles.socialBtn} ${styles.linkedin}`} onClick={(e) => shareSocial(e, "linkedin")} aria-label="Share on LinkedIn">
+            <button
+              type="button"
+              className={`${styles.socialBtn} ${styles.linkedin}`}
+              onClick={(e) => shareSocial(e, "linkedin")}
+              aria-label="Share on LinkedIn"
+            >
               <FiLinkedin aria-hidden="true" />
               <span>LinkedIn</span>
             </button>
-            <button type="button" className={`${styles.socialBtn} ${styles.facebook}`} onClick={(e) => shareSocial(e, "facebook")} aria-label="Share on Facebook">
+            <button
+              type="button"
+              className={`${styles.socialBtn} ${styles.facebook}`}
+              onClick={(e) => shareSocial(e, "facebook")}
+              aria-label="Share on Facebook"
+            >
               <FiFacebook aria-hidden="true" />
               <span>Facebook</span>
             </button>
           </div>
 
           {/* Copy link */}
-          <button type="button" className={`${styles.copyBtn} ${copied ? styles.copiedState : ""}`} onClick={copyLink}>
-            {copied ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+          <button
+            type="button"
+            className={`${styles.copyBtn} ${copied ? styles.copiedState : ""}`}
+            onClick={copyLink}
+          >
+            {copied ? (
+              <FiCheck aria-hidden="true" />
+            ) : (
+              <FiCopy aria-hidden="true" />
+            )}
             {copied ? "Link Copied!" : "Copy Link"}
           </button>
         </div>

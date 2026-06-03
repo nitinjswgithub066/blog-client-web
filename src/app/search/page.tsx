@@ -66,9 +66,13 @@ function SearchResults() {
 
         {query && results.length === 0 && (
           <div className={styles.empty}>
-            <span className={styles.emptyIcon} aria-hidden="true">🔍</span>
+            <span className={styles.emptyIcon} aria-hidden="true">
+              🔍
+            </span>
             <h2 className={styles.emptyTitle}>Nothing found</h2>
-            <p className={styles.emptyText}>Try different keywords or browse our categories.</p>
+            <p className={styles.emptyText}>
+              Try different keywords or browse our categories.
+            </p>
           </div>
         )}
       </div>

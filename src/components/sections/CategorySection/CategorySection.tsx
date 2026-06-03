@@ -9,7 +9,8 @@ import styles from "./CategorySection.module.css";
 const allPosts = getAllPosts();
 const postCountBySlug: Record<string, number> = {};
 for (const p of allPosts) {
-  postCountBySlug[p.category.slug] = (postCountBySlug[p.category.slug] ?? 0) + 1;
+  postCountBySlug[p.category.slug] =
+    (postCountBySlug[p.category.slug] ?? 0) + 1;
 }
 
 export default function CategorySection() {
@@ -21,11 +22,17 @@ export default function CategorySection() {
           <div className={styles.titleGroup}>
             <FiGrid className={styles.icon} aria-hidden="true" />
             <div>
-              <h2 id="categories-heading" className={styles.title}>Explore Topics</h2>
-              <p className={styles.subtitle}>Dive deep into the subjects that matter to you</p>
+              <h2 id="categories-heading" className={styles.title}>
+                Explore Topics
+              </h2>
+              <p className={styles.subtitle}>
+                Dive deep into the subjects that matter to you
+              </p>
             </div>
           </div>
-          <Link href={ROUTES.CATEGORIES} className={styles.viewAll}>All Topics</Link>
+          <Link href={ROUTES.CATEGORIES} className={styles.viewAll}>
+            All Topics
+          </Link>
         </div>
 
         <div className={styles.grid}>

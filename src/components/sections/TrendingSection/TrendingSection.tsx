@@ -16,9 +16,13 @@ export default function TrendingSection() {
         <div className={styles.header}>
           <div className={styles.titleGroup}>
             <FiTrendingUp className={styles.icon} aria-hidden="true" />
-            <h2 id="trending-heading" className={styles.title}>Trending Now</h2>
+            <h2 id="trending-heading" className={styles.title}>
+              Trending Now
+            </h2>
           </div>
-          <Link href={ROUTES.TRENDING} className={styles.viewAll}>All Trending</Link>
+          <Link href={ROUTES.TRENDING} className={styles.viewAll}>
+            All Trending
+          </Link>
         </div>
 
         <div className={styles.layout}>

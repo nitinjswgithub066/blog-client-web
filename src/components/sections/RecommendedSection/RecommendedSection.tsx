@@ -14,9 +14,10 @@ export default function RecommendedSection({
   currentPostId,
   categorySlug,
 }: RecommendedSectionProps) {
-  const posts = currentPostId && categorySlug
-    ? getRelatedPosts(currentPostId, categorySlug, 4)
-    : getLatestPosts(4);
+  const posts =
+    currentPostId && categorySlug
+      ? getRelatedPosts(currentPostId, categorySlug, 4)
+      : getLatestPosts(4);
 
   if (posts.length === 0) return null;
 
@@ -28,7 +29,9 @@ export default function RecommendedSection({
           <h2 id="recommended-heading" className={styles.title}>
             {currentPostId ? "You Might Also Like" : "Recommended for You"}
           </h2>
-          <Link href={ROUTES.LATEST} className={styles.viewAll}>More</Link>
+          <Link href={ROUTES.LATEST} className={styles.viewAll}>
+            More
+          </Link>
         </div>
 
         <div className={styles.grid}>

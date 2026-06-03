@@ -23,7 +23,9 @@ export default function FeaturedSection({
           <div className={styles.headerLeft}>
             <FiBookmark className={styles.headerIcon} aria-hidden="true" />
             <div>
-              <h2 id="featured-heading" className={styles.title}>{title}</h2>
+              <h2 id="featured-heading" className={styles.title}>
+                {title}
+              </h2>
               <p className={styles.subtitle}>{subtitle}</p>
             </div>
           </div>

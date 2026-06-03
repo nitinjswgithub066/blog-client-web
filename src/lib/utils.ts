@@ -58,11 +58,11 @@ export function timeAgo(isoString: string): string {
   const diffMonths = Math.floor(diffDays / 30);
   const diffYears = Math.floor(diffDays / 365);
 
-  if (diffSec < 60)    return "just now";
-  if (diffMin < 60)    return `${diffMin}m ago`;
-  if (diffHrs < 24)    return `${diffHrs}h ago`;
-  if (diffDays < 7)    return `${diffDays}d ago`;
-  if (diffWeeks < 4)   return `${diffWeeks}w ago`;
+  if (diffSec < 60) return "just now";
+  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffHrs < 24) return `${diffHrs}h ago`;
+  if (diffDays < 7) return `${diffDays}d ago`;
+  if (diffWeeks < 4) return `${diffWeeks}w ago`;
   if (diffMonths < 12) return `${diffMonths}mo ago`;
   return `${diffYears}y ago`;
 }
@@ -103,7 +103,7 @@ export function formatReadingTime(minutes: number): string {
  */
 export function formatNumber(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000)     return `${(n / 1_000).toFixed(1)}K`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
   return n.toString();
 }
 
@@ -141,7 +141,7 @@ export function truncate(text: string, maxLength: number): string {
 export function getInitials(name: string): string {
   const parts = name.trim().split(/\s+/);
   if (parts.length === 1) {
-    return (parts[0].slice(0, 2)).toUpperCase();
+    return parts[0].slice(0, 2).toUpperCase();
   }
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
@@ -162,80 +162,94 @@ export function capitalize(text: string): string {
 // -----------------------------------------------------------------------------
 
 export interface GradientConfig {
-  background: string;   // Full CSS gradient string (for inline style)
-  accent: string;       // Hex accent color (for overlays, badges)
-  textColor: string;    // Light or dark text on this gradient
+  background: string; // Full CSS gradient string (for inline style)
+  accent: string; // Hex accent color (for overlays, badges)
+  textColor: string; // Light or dark text on this gradient
 }
 
 const categoryGradients: Record<string, GradientConfig> = {
   technology: {
-    background: "linear-gradient(135deg, #0d0221 0%, #1a0845 40%, #2d1b69 70%, #6C63FF 100%)",
+    background:
+      "linear-gradient(135deg, #0d0221 0%, #1a0845 40%, #2d1b69 70%, #6C63FF 100%)",
     accent: "#6C63FF",
     textColor: "#ffffff",
   },
   programming: {
-    background: "linear-gradient(135deg, #012018 0%, #03422f 40%, #065f46 70%, #10B981 100%)",
+    background:
+      "linear-gradient(135deg, #012018 0%, #03422f 40%, #065f46 70%, #10B981 100%)",
     accent: "#10B981",
     textColor: "#ffffff",
   },
   "web-development": {
-    background: "linear-gradient(135deg, #060d1f 0%, #0c1e4a 40%, #1e3a8a 70%, #3B82F6 100%)",
+    background:
+      "linear-gradient(135deg, #060d1f 0%, #0c1e4a 40%, #1e3a8a 70%, #3B82F6 100%)",
     accent: "#3B82F6",
     textColor: "#ffffff",
   },
   ai: {
-    background: "linear-gradient(135deg, #0f0020 0%, #2e0066 40%, #5b21b6 70%, #8B5CF6 100%)",
+    background:
+      "linear-gradient(135deg, #0f0020 0%, #2e0066 40%, #5b21b6 70%, #8B5CF6 100%)",
     accent: "#8B5CF6",
     textColor: "#ffffff",
   },
   startups: {
-    background: "linear-gradient(135deg, #1a0a00 0%, #451f00 40%, #78350f 70%, #F59E0B 100%)",
+    background:
+      "linear-gradient(135deg, #1a0a00 0%, #451f00 40%, #78350f 70%, #F59E0B 100%)",
     accent: "#F59E0B",
     textColor: "#ffffff",
   },
   business: {
-    background: "linear-gradient(135deg, #1a0000 0%, #450000 40%, #7f1d1d 70%, #EF4444 100%)",
+    background:
+      "linear-gradient(135deg, #1a0000 0%, #450000 40%, #7f1d1d 70%, #EF4444 100%)",
     accent: "#EF4444",
     textColor: "#ffffff",
   },
   finance: {
-    background: "linear-gradient(135deg, #001412 0%, #022f2b 40%, #0f5955 70%, #14B8A6 100%)",
+    background:
+      "linear-gradient(135deg, #001412 0%, #022f2b 40%, #0f5955 70%, #14B8A6 100%)",
     accent: "#14B8A6",
     textColor: "#ffffff",
   },
   education: {
-    background: "linear-gradient(135deg, #001018 0%, #01263a 40%, #0c4a6e 70%, #06B6D4 100%)",
+    background:
+      "linear-gradient(135deg, #001018 0%, #01263a 40%, #0c4a6e 70%, #06B6D4 100%)",
     accent: "#06B6D4",
     textColor: "#ffffff",
   },
   career: {
-    background: "linear-gradient(135deg, #1a0800 0%, #431200 40%, #7c2d12 70%, #F97316 100%)",
+    background:
+      "linear-gradient(135deg, #1a0800 0%, #431200 40%, #7c2d12 70%, #F97316 100%)",
     accent: "#F97316",
     textColor: "#ffffff",
   },
   gaming: {
-    background: "linear-gradient(135deg, #100020 0%, #2e0045 40%, #581c87 70%, #A855F7 100%)",
+    background:
+      "linear-gradient(135deg, #100020 0%, #2e0045 40%, #581c87 70%, #A855F7 100%)",
     accent: "#A855F7",
     textColor: "#ffffff",
   },
   entertainment: {
-    background: "linear-gradient(135deg, #1a0015 0%, #4a003a 40%, #831843 70%, #EC4899 100%)",
+    background:
+      "linear-gradient(135deg, #1a0015 0%, #4a003a 40%, #831843 70%, #EC4899 100%)",
     accent: "#EC4899",
     textColor: "#ffffff",
   },
   reviews: {
-    background: "linear-gradient(135deg, #081000 0%, #1a2e00 40%, #365314 70%, #84CC16 100%)",
+    background:
+      "linear-gradient(135deg, #081000 0%, #1a2e00 40%, #365314 70%, #84CC16 100%)",
     accent: "#84CC16",
     textColor: "#ffffff",
   },
   thoughts: {
-    background: "linear-gradient(135deg, #07090f 0%, #0f172a 40%, #1e293b 70%, #334155 100%)",
+    background:
+      "linear-gradient(135deg, #07090f 0%, #0f172a 40%, #1e293b 70%, #334155 100%)",
     accent: "#94A3B8",
     textColor: "#ffffff",
   },
   // Default fallback
   default: {
-    background: "linear-gradient(135deg, #09090B 0%, #111114 40%, #18181C 70%, #27272A 100%)",
+    background:
+      "linear-gradient(135deg, #09090B 0%, #111114 40%, #18181C 70%, #27272A 100%)",
     accent: "#6C63FF",
     textColor: "#ffffff",
   },
@@ -268,7 +282,7 @@ export function getCategoryGradientBg(categorySlug: string): string {
 export function paginate<T>(
   items: T[],
   page: number,
-  perPage: number
+  perPage: number,
 ): { items: T[]; totalPages: number; totalItems: number } {
   const totalItems = items.length;
   const totalPages = Math.ceil(totalItems / perPage);
@@ -289,7 +303,6 @@ export function paginate<T>(
  * Build an absolute URL from a path (uses NEXT_PUBLIC_SITE_URL env var).
  */
 export function absoluteUrl(path: string): string {
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://vexirahub.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vexirahub.com";
   return `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 }

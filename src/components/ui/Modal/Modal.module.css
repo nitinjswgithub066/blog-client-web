@@ -24,9 +24,15 @@
   flex-direction: column;
 }
 
-.sm { max-width: 400px; }
-.md { max-width: 560px; }
-.lg { max-width: 760px; }
+.sm {
+  max-width: 400px;
+}
+.md {
+  max-width: 560px;
+}
+.lg {
+  max-width: 760px;
+}
 
 .header {
   display: flex;
@@ -62,7 +68,7 @@
   font-size: 1rem;
   transition:
     background var(--duration-fast) var(--ease-smooth),
-    color       var(--duration-fast) var(--ease-smooth);
+    color var(--duration-fast) var(--ease-smooth);
   flex-shrink: 0;
 }
 

@@ -4,9 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FiHome, FiTrendingUp, FiClock, FiGrid,
-  FiFeather, FiUser, FiMail, FiSearch, FiX,
-  FiChevronDown, FiChevronRight,
+  FiHome,
+  FiTrendingUp,
+  FiClock,
+  FiGrid,
+  FiFeather,
+  FiUser,
+  FiMail,
+  FiSearch,
+  FiX,
+  FiChevronDown,
+  FiChevronRight,
 } from "react-icons/fi";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useScrollLock } from "@/hooks/useScrollLock";
@@ -44,7 +52,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     if (categoriesButtonRef.current) {
       categoriesButtonRef.current.setAttribute(
         "aria-expanded",
-        categoriesOpen ? "true" : "false"
+        categoriesOpen ? "true" : "false",
       );
     }
   }, [categoriesOpen]);
@@ -109,7 +117,10 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                   return (
                     <div key={link.href}>
                       <button
-                        className={cn(styles.navItem, isActive && styles.active)}
+                        className={cn(
+                          styles.navItem,
+                          isActive && styles.active,
+                        )}
                         type="button"
                         onClick={() => setCategoriesOpen((o) => !o)}
                         aria-expanded="false"
@@ -118,7 +129,12 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                       >
                         {Icon && <Icon className={styles.navIcon} />}
                         <span className={styles.navLabel}>{link.label}</span>
-                        <span className={cn(styles.chevron, categoriesOpen && styles.chevronOpen)}>
+                        <span
+                          className={cn(
+                            styles.chevron,
+                            categoriesOpen && styles.chevronOpen,
+                          )}
+                        >
                           <FiChevronDown />
                         </span>
                       </button>
@@ -139,7 +155,8 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                                 href={child.href}
                                 className={cn(
                                   styles.subItem,
-                                  isActiveRoutePrefix(pathname, child.href) && styles.subItemActive
+                                  isActiveRoutePrefix(pathname, child.href) &&
+                                    styles.subItemActive,
                                 )}
                                 onClick={onClose}
                               >

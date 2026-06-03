@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { FiClock, FiTrendingUp } from "react-icons/fi";
 import Badge from "@/components/ui/Badge";
-import { formatReadingTime, formatNumber, getCategoryGradientBg, getInitials, cn } from "@/lib/utils";
+import {
+  formatReadingTime,
+  formatNumber,
+  getCategoryGradientBg,
+  getInitials,
+  cn,
+} from "@/lib/utils";
 import { getPostRoute } from "@/lib/routes";
 import type { Post } from "@/types";
 import styles from "./TrendingCard.module.css";
@@ -12,7 +18,11 @@ interface TrendingCardProps {
   className?: string;
 }
 
-export default function TrendingCard({ post, rank, className }: TrendingCardProps) {
+export default function TrendingCard({
+  post,
+  rank,
+  className,
+}: TrendingCardProps) {
   const gradient = getCategoryGradientBg(post.category.slug);
 
   return (
