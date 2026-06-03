@@ -1,0 +1,24 @@
+/* ==========================================================================
+   VexiraHub — Breakpoints Reference
+   ========================================================================== */
+
+/* 
+  Use standard media queries in your CSS modules with these pixel values
+  to ensure consistent production breakpoints across the application.
+
+  Mobile Small:  320px  (iPhone SE)
+  Mobile:        480px  (Standard Mobile)
+  Tablet:        768px  (iPad Portrait)
+  Laptop:        1024px (iPad Pro / Small Laptop)
+  Desktop:       1280px (Standard Desktop)
+  Wide:          1536px (Large Screens)
+*/
+
+:root {
+  --bp-mobile-sm: 320px;
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-laptop: 1024px;
+  --bp-desktop: 1280px;
+  --bp-wide: 1536px;
+}
