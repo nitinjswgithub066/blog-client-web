@@ -68,21 +68,24 @@ export default function Input({
           </span>
         )}
 
-        <input
-          id={inputId}
-          ref={inputRef}
-          className={cn(
-            styles.input,
-            !!leftIcon && styles.hasLeftIcon,
-            !!rightIcon && styles.hasRightIcon,
-            className,
-          )}
-          aria-describedby={
-            error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined
-          }
-          aria-invalid="false"
-          {...props}
-        />
+        <div suppressHydrationWarning style={{ display: "contents" }}>
+          <input
+            id={inputId}
+            ref={inputRef}
+            className={cn(
+              styles.input,
+              !!leftIcon && styles.hasLeftIcon,
+              !!rightIcon && styles.hasRightIcon,
+              className,
+            )}
+            aria-describedby={
+              error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined
+            }
+            aria-invalid="false"
+            {...props}
+            suppressHydrationWarning
+          />
+        </div>
 
         {rightIcon && (
           <button

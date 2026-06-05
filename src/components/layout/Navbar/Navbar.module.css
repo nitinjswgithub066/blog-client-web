@@ -164,13 +164,33 @@
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   padding: var(--space-3);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--space-1);
-  width: max-content;
-  max-width: calc(100vw - 2rem);
+  min-width: 180px;
+  max-height: 260px; /* Show roughly 6 categories before scrolling */
+  overflow-y: auto;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(109, 93, 246, 0.45) transparent;
+}
+
+.megaMenu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.megaMenu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.megaMenu::-webkit-scrollbar-thumb {
+  background: rgba(109, 93, 246, 0.45);
+  border-radius: 999px;
+}
+
+.megaMenu::-webkit-scrollbar-thumb:hover {
+  background: rgba(109, 93, 246, 0.7);
 }
 
 .megaItem {

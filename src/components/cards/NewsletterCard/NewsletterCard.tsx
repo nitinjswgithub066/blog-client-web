@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMail, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -19,6 +19,11 @@ export default function NewsletterCard({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -68,30 +73,34 @@ export default function NewsletterCard({
         </div>
       </div>
 
-      <form className={styles.form} onSubmit={handleSubmit} noValidate>
-        <Input
-          id="newsletter-email"
-          type="email"
-          placeholder="your@email.com"
-          variant="glass"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          leftIcon={<FiMail />}
-          error={error}
-          fullWidth
-          aria-label="Email address"
-          autoComplete="email"
-        />
-        <Button
-          type="submit"
-          variant="primary"
-          isLoading={loading}
-          rightIcon={!loading ? <FiArrowRight /> : undefined}
-          fullWidth={variant === "default"}
-        >
-          Subscribe Free
-        </Button>
-      </form>
+      {mounted ? (
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <Input
+            id="newsletter-email"
+            type="email"
+            placeholder="your@email.com"
+            variant="glass"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            leftIcon={<FiMail />}
+            error={error}
+            fullWidth
+            aria-label="Email address"
+            autoComplete="email"
+          />
+          <Button
+            type="submit"
+            variant="primary"
+            isLoading={loading}
+            rightIcon={!loading ? <FiArrowRight /> : undefined}
+            fullWidth={variant === "default"}
+          >
+            Subscribe Free
+          </Button>
+        </form>
+      ) : (
+        <div className={styles.form} style={{ minHeight: "105px" }} />
+      )}
 
       <p className={styles.disclaimer}>
         Join 12,000+ readers. No spam. One-click unsubscribe.
