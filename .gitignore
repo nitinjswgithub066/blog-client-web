@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# node modules:
+/node_modules.broken-20260608224513
+/node_modules.broken-20260608230351
