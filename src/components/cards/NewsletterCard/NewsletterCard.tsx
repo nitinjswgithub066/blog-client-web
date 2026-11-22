@@ -19,7 +19,6 @@ export default function NewsletterCard({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
