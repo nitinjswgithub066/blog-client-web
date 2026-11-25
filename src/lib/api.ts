@@ -34,7 +34,9 @@ async function request<T>(path: string): Promise<T> {
 
   const payload = (await response.json()) as ApiEnvelope<T>;
   if (payload.success !== true) {
-    throw new Error(payload.message || "The public API returned an unsuccessful response.");
+    throw new Error(
+      payload.message || "The public API returned an unsuccessful response.",
+    );
   }
   return payload.data;
 }
@@ -43,16 +45,31 @@ export async function getFeaturedPosts(): Promise<Post[]> {
   return request<Post[]>("/public/posts/featured");
 }
 
-export async function getLatestPosts(page = 1, limit = 12): Promise<PaginatedResult<Post>> {
-  return request<PaginatedResult<Post>>(`/public/posts/latest?page=${page}&limit=${limit}`);
+export async function getLatestPosts(
+  page = 1,
+  limit = 12,
+): Promise<PaginatedResult<Post>> {
+  return request<PaginatedResult<Post>>(
+    `/public/posts/latest?page=${page}&limit=${limit}`,
+  );
 }
 
-export async function getTrendingPosts(page = 1, limit = 12): Promise<PaginatedResult<Post>> {
-  return request<PaginatedResult<Post>>(`/public/posts/trending?page=${page}&limit=${limit}`);
+export async function getTrendingPosts(
+  page = 1,
+  limit = 12,
+): Promise<PaginatedResult<Post>> {
+  return request<PaginatedResult<Post>>(
+    `/public/posts/trending?page=${page}&limit=${limit}`,
+  );
 }
 
-export async function getThoughtPosts(page = 1, limit = 12): Promise<PaginatedResult<Post>> {
-  return request<PaginatedResult<Post>>(`/public/posts/thoughts?page=${page}&limit=${limit}`);
+export async function getThoughtPosts(
+  page = 1,
+  limit = 12,
+): Promise<PaginatedResult<Post>> {
+  return request<PaginatedResult<Post>>(
+    `/public/posts/thoughts?page=${page}&limit=${limit}`,
+  );
 }
 
 export async function getPublicPost(slug: string): Promise<Post | null> {
@@ -68,25 +85,37 @@ export async function getPublicCategories(): Promise<Category[]> {
   return request<Category[]>("/public/categories/active");
 }
 
-export async function getCategoryPosts(slug: string, page = 1, limit = 12): Promise<{ category: Category } & PaginatedResult<Post>> {
+export async function getCategoryPosts(
+  slug: string,
+  page = 1,
+  limit = 12,
+): Promise<{ category: Category } & PaginatedResult<Post>> {
   return request<{ category: Category } & PaginatedResult<Post>>(
     `/public/categories/${encodeURIComponent(slug)}/posts?page=${page}&limit=${limit}`,
   );
 }
 
-export async function searchPublicPosts(query: string, page = 1, limit = 12): Promise<PaginatedResult<Post>> {
+export async function searchPublicPosts(
+  query: string,
+  page = 1,
+  limit = 12,
+): Promise<PaginatedResult<Post>> {
   return request<PaginatedResult<Post>>(
     `/public/posts/search?q=${encodeURIComponent(query)}&page=${page}&limit=${limit}`,
   );
 }
 
-export async function subscribeToNewsletter(email: string): Promise<{ alreadySubscribed?: boolean }> {
+export async function subscribeToNewsletter(
+  email: string,
+): Promise<{ alreadySubscribed?: boolean }> {
   const response = await fetch(API_BASE_URL + "/subscribe", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({ email }),
   });
-  const payload = (await response.json()) as ApiEnvelope<{ alreadySubscribed?: boolean }>;
+  const payload = (await response.json()) as ApiEnvelope<{
+    alreadySubscribed?: boolean;
+  }>;
   if (!response.ok || payload.success !== true) {
     throw new Error(payload.message || "Unable to complete your subscription.");
   }

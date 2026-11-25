@@ -68,17 +68,27 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
   useEffect(() => {
     const trimmed = query.trim();
-    if (!trimmed) { setResults([]); return; }
     let active = true;
-    const timer = window.setTimeout(async () => {
-      try {
-        const response = await searchPublicPosts(trimmed, 1, 6);
-        if (active) setResults(response.items);
-      } catch {
-        if (active) setResults([]);
-      }
-    }, 250);
-    return () => { active = false; window.clearTimeout(timer); };
+    const timer = window.setTimeout(
+      async () => {
+        if (!trimmed) {
+          setResults([]);
+          return;
+        }
+
+        try {
+          const response = await searchPublicPosts(trimmed, 1, 6);
+          if (active) setResults(response.items);
+        } catch {
+          if (active) setResults([]);
+        }
+      },
+      trimmed ? 250 : 0,
+    );
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
   }, [query]);
 
   function handleFullSearch(e?: React.FormEvent) {

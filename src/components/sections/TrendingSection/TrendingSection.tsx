@@ -9,8 +9,11 @@ import styles from "./TrendingSection.module.css";
 
 export default async function TrendingSection() {
   let trendingPosts: Post[] = [];
-  try { trendingPosts = (await getTrendingPosts(1, 5)).items; }
-  catch (error) { console.error("[HOME_TRENDING] Unable to load posts:", error); }
+  try {
+    trendingPosts = (await getTrendingPosts(1, 5)).items;
+  } catch (error) {
+    console.error("[HOME_TRENDING] Unable to load posts:", error);
+  }
 
   const [top, ...rest] = trendingPosts;
   if (!top) return null;
@@ -20,14 +23,22 @@ export default async function TrendingSection() {
         <div className={styles.header}>
           <div className={styles.titleGroup}>
             <FiTrendingUp className={styles.icon} aria-hidden="true" />
-            <h2 id="trending-heading" className={styles.title}>Trending Now</h2>
+            <h2 id="trending-heading" className={styles.title}>
+              Trending Now
+            </h2>
           </div>
-          <Link href={ROUTES.TRENDING} className={styles.viewAll}>All Trending</Link>
+          <Link href={ROUTES.TRENDING} className={styles.viewAll}>
+            All Trending
+          </Link>
         </div>
         <div className={styles.layout}>
-          <div className={styles.featured}><BlogCard post={top} orientation="vertical" /></div>
+          <div className={styles.featured}>
+            <BlogCard post={top} orientation="vertical" />
+          </div>
           <div className={styles.list}>
-            {rest.map((post, i) => <TrendingCard key={post.id} post={post} rank={i + 2} />)}
+            {rest.map((post, i) => (
+              <TrendingCard key={post.id} post={post} rank={i + 2} />
+            ))}
           </div>
         </div>
       </div>
