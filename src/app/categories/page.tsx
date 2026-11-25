@@ -1,3 +1,4 @@
+import type { Category } from "@/types";
 import type { Metadata } from "next";
 import { FiGrid } from "react-icons/fi";
 import CategoryCard from "@/components/cards/CategoryCard";
@@ -7,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = { title: "All Categories", description: "Browse all published content categories on VexiraHub." };
 
 export default async function CategoriesPage() {
-  let categories = [];
+  let categories: Category[] = [];
   try { categories = await getPublicCategories(); }
   catch (error) { console.error("[CATEGORIES_PAGE] Unable to load categories:", error); }
   return (
