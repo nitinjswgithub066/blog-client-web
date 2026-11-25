@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import Link from "next/link";
 import { FiClock } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
@@ -9,7 +10,7 @@ import styles from "./LatestPostsSection.module.css";
 interface LatestPostsSectionProps { limit?: number; showSidebar?: boolean }
 
 export default async function LatestPostsSection({ limit = 6, showSidebar = true }: LatestPostsSectionProps) {
-  let posts = [];
+  let posts: Post[] = [];
   try { posts = (await getLatestPosts(1, limit)).items; }
   catch (error) { console.error("[HOME_LATEST] Unable to load posts:", error); }
 
