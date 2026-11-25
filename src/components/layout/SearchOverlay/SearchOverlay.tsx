@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,7 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 import { useScrollLock } from "@/hooks/useScrollLock";
-import { searchPosts } from "@/data/posts";
+import { searchPublicPosts } from "@/lib/api";
 import { categories } from "@/data/categories";
 import {
   getCategoryGradientBg,
@@ -38,6 +38,7 @@ interface SearchOverlayProps {
 
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<Post[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -65,9 +66,19 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     return () => document.removeEventListener("keydown", handler);
   }, [isOpen, handleClose]);
 
-  const results = useMemo<Post[]>(() => {
+  useEffect(() => {
     const trimmed = query.trim();
-    return trimmed ? searchPosts(trimmed).slice(0, 6) : [];
+    if (!trimmed) { setResults([]); return; }
+    let active = true;
+    const timer = window.setTimeout(async () => {
+      try {
+        const response = await searchPublicPosts(trimmed, 1, 6);
+        if (active) setResults(response.items);
+      } catch {
+        if (active) setResults([]);
+      }
+    }, 250);
+    return () => { active = false; window.clearTimeout(timer); };
   }, [query]);
 
   function handleFullSearch(e?: React.FormEvent) {
