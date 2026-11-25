@@ -7,11 +7,11 @@ const nextConfig: NextConfig & { allowedDevOrigins: string[] } = {
       beforeFiles: [
         {
           source: "/admin",
-          destination: "https://blog-admin-dashboard-lilac.vercel.app/",
+          destination: "https://blog-admin-dashboard-lilac.vercel.app/admin",
         },
         {
           source: "/admin/:path*",
-          destination: "https://blog-admin-dashboard-lilac.vercel.app/:path*",
+          destination: "https://blog-admin-dashboard-lilac.vercel.app/admin/:path*",
         },
         {
           source: "/api/:path*",
