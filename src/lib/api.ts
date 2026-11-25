@@ -78,6 +78,8 @@ export async function searchPublicPosts(query: string, page = 1, limit = 12): Pr
   return request<PaginatedResult<Post>>(
     `/public/posts/search?q=${encodeURIComponent(query)}&page=${page}&limit=${limit}`,
   );
+}
+
 export async function subscribeToNewsletter(email: string): Promise<{ alreadySubscribed?: boolean }> {
   const response = await fetch(API_BASE_URL + "/subscribe", {
     method: "POST",
