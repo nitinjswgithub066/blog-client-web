@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import type { Metadata } from "next";
 import { FiClock } from "react-icons/fi";
 import Sidebar from "@/components/layout/Sidebar";
@@ -8,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = { title: "Latest Articles", description: "Browse the latest published articles on VexiraHub." };
 
 export default async function LatestPage() {
-  let posts = [];
+  let posts: Post[] = [];
   try { posts = (await getLatestPosts(1, 50)).items; }
   catch (error) { console.error("[LATEST_PAGE] Unable to load posts:", error); }
   return (
