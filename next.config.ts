@@ -11,7 +11,8 @@ const nextConfig: NextConfig & { allowedDevOrigins: string[] } = {
         },
         {
           source: "/admin/:path*",
-          destination: "https://blog-admin-dashboard-lilac.vercel.app/admin/:path*",
+          destination:
+            "https://blog-admin-dashboard-lilac.vercel.app/admin/:path*",
         },
         {
           source: "/api/:path*",
