@@ -4,11 +4,12 @@ import { useState } from "react";
 import { FiMail, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import { subscribeToNewsletter } from "@/lib/api";
 import styles from "./NewsletterCard.module.css";
 
 interface NewsletterCardProps {
   className?: string;
-  variant?: "default" | "inline"; // "inline" = horizontal layout
+  variant?: "default" | "inline";
 }
 
 export default function NewsletterCard({
@@ -19,26 +20,35 @@ export default function NewsletterCard({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
 
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    setError("");
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError("Please enter a valid email address.");
       return;
     }
-
     setLoading(true);
-    // Simulate API call for Phase 1
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await subscribeToNewsletter(email.trim());
       setSubmitted(true);
-    }, 1200);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Unable to subscribe right now. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
+  const cardClass = [styles.card, styles[variant], className]
+    .filter(Boolean)
+    .join(" ");
   if (submitted) {
     return (
-      <div className={`${styles.card} ${styles[variant]} ${className ?? ""}`}>
+      <div className={cardClass}>
         <div className={styles.success}>
           <FiCheckCircle className={styles.successIcon} aria-hidden="true" />
           <div>
@@ -53,7 +63,7 @@ export default function NewsletterCard({
   }
 
   return (
-    <div className={`${styles.card} ${styles[variant]} ${className ?? ""}`}>
+    <div className={cardClass}>
       <div className={styles.header}>
         <div className={styles.iconWrapper} aria-hidden="true">
           <FiMail />
@@ -66,7 +76,6 @@ export default function NewsletterCard({
           </p>
         </div>
       </div>
-
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <Input
           id="newsletter-email"
@@ -74,7 +83,7 @@ export default function NewsletterCard({
           placeholder="your@email.com"
           variant="glass"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
           leftIcon={<FiMail />}
           error={error}
           fullWidth
@@ -91,10 +100,7 @@ export default function NewsletterCard({
           Subscribe Free
         </Button>
       </form>
-
-      <p className={styles.disclaimer}>
-        Join 12,000+ readers. No spam. One-click unsubscribe.
-      </p>
+      <p className={styles.disclaimer}>No spam. One-click unsubscribe.</p>
     </div>
   );
 }

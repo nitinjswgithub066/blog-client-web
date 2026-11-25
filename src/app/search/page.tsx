@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useMemo, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { FiSearch, FiX } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
 import Input from "@/components/ui/Input";
-import { searchPosts } from "@/data/posts";
+import { searchPublicPosts } from "@/lib/api";
 import type { Post } from "@/types";
 import styles from "./page.module.css";
 
@@ -13,9 +13,42 @@ function SearchResults() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") ?? "";
   const [query, setQuery] = useState(initialQuery);
-  const results = useMemo<Post[]>(() => {
+  const [results, setResults] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
     const trimmed = query.trim();
-    return trimmed ? searchPosts(trimmed) : [];
+    let active = true;
+    const timer = window.setTimeout(
+      async () => {
+        if (!trimmed) {
+          setResults([]);
+          setError("");
+          setIsLoading(false);
+          return;
+        }
+
+        setIsLoading(true);
+        setError("");
+        try {
+          const response = await searchPublicPosts(trimmed, 1, 30);
+          if (active) setResults(response.items);
+        } catch {
+          if (active) {
+            setResults([]);
+            setError("Search is temporarily unavailable. Please try again.");
+          }
+        } finally {
+          if (active) setIsLoading(false);
+        }
+      },
+      trimmed ? 300 : 0,
+    );
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
   }, [query]);
 
   return (
@@ -31,7 +64,6 @@ function SearchResults() {
             Find articles, tutorials, and insights across all topics.
           </p>
         </header>
-
         <div className={styles.searchBar}>
           <Input
             type="search"
@@ -47,15 +79,16 @@ function SearchResults() {
             autoFocus
           />
         </div>
-
         {query && (
           <p className={styles.resultCount}>
-            {results.length === 0
-              ? `No results for "${query}"`
-              : `${results.length} result${results.length !== 1 ? "s" : ""} for "${query}"`}
+            {isLoading
+              ? "Searching…"
+              : error ||
+                (results.length === 0
+                  ? `No results for "${query}"`
+                  : `${results.length} result${results.length !== 1 ? "s" : ""} for "${query}"`)}
           </p>
         )}
-
         {results.length > 0 && (
           <div className={styles.grid}>
             {results.map((post) => (
@@ -63,8 +96,7 @@ function SearchResults() {
             ))}
           </div>
         )}
-
-        {query && results.length === 0 && (
+        {query && !isLoading && !error && results.length === 0 && (
           <div className={styles.empty}>
             <span className={styles.emptyIcon} aria-hidden="true">
               🔍

@@ -1,20 +1,19 @@
+import type { Category } from "@/types";
 import Link from "next/link";
 import { FiGrid } from "react-icons/fi";
 import CategoryCard from "@/components/cards/CategoryCard";
-import { getActiveCategories, getAllPosts } from "@/data/posts";
+import { getPublicCategories } from "@/lib/api";
 import { ROUTES } from "@/lib/routes";
 import styles from "./CategorySection.module.css";
 
-// Count posts per category
-const allPosts = getAllPosts();
-const postCountBySlug: Record<string, number> = {};
-for (const p of allPosts) {
-  postCountBySlug[p.category.slug] =
-    (postCountBySlug[p.category.slug] ?? 0) + 1;
-}
-
-export default function CategorySection() {
-  const activeCategories = getActiveCategories().slice(0, 15); // Max 15 on desktop
+export default async function CategorySection() {
+  let categories: Category[] = [];
+  try {
+    categories = (await getPublicCategories()).slice(0, 15);
+  } catch (error) {
+    console.error("[HOME_CATEGORIES] Unable to load categories:", error);
+  }
+  if (!categories.length) return null;
   return (
     <section className={styles.section} aria-labelledby="categories-heading">
       <div className={styles.container}>
@@ -34,14 +33,10 @@ export default function CategorySection() {
             All Topics
           </Link>
         </div>
-
         <div className={styles.grid}>
-          {activeCategories.map((cat) => (
+          {categories.map((cat) => (
             <div key={cat.id} className={styles.cardWrapper}>
-              <CategoryCard
-                category={cat}
-                postCount={postCountBySlug[cat.slug] ?? 0}
-              />
+              <CategoryCard category={cat} postCount={cat.postCount ?? 0} />
             </div>
           ))}
         </div>
