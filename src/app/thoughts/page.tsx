@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import type { Metadata } from "next";
 import { FiFeather } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
@@ -8,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = { title: "Thoughts", description: "Personal essays, opinions, and reflections published on VexiraHub." };
 
 export default async function ThoughtsPage() {
-  let posts = [];
+  let posts: Post[] = [];
   try { posts = (await getThoughtPosts(1, 50)).items; }
   catch (error) { console.error("[THOUGHTS_PAGE] Unable to load posts:", error); }
   return (
