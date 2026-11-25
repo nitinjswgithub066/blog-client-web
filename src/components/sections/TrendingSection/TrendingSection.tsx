@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import Link from "next/link";
 import { FiTrendingUp } from "react-icons/fi";
 import TrendingCard from "@/components/cards/TrendingCard";
@@ -7,7 +8,7 @@ import { ROUTES } from "@/lib/routes";
 import styles from "./TrendingSection.module.css";
 
 export default async function TrendingSection() {
-  let trendingPosts = [];
+  let trendingPosts: Post[] = [];
   try { trendingPosts = (await getTrendingPosts(1, 5)).items; }
   catch (error) { console.error("[HOME_TRENDING] Unable to load posts:", error); }
 
