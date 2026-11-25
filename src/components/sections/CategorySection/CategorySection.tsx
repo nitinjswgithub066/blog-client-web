@@ -1,3 +1,4 @@
+import type { Category } from "@/types";
 import Link from "next/link";
 import { FiGrid } from "react-icons/fi";
 import CategoryCard from "@/components/cards/CategoryCard";
@@ -6,7 +7,7 @@ import { ROUTES } from "@/lib/routes";
 import styles from "./CategorySection.module.css";
 
 export default async function CategorySection() {
-  let categories = [];
+  let categories: Category[] = [];
   try { categories = (await getPublicCategories()).slice(0, 15); }
   catch (error) { console.error("[HOME_CATEGORIES] Unable to load categories:", error); }
   if (!categories.length) return null;
