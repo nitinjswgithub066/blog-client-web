@@ -1,3 +1,4 @@
+import type { Post } from "@/types";
 import type { Metadata } from "next";
 import { FiTrendingUp } from "react-icons/fi";
 import BlogCard from "@/components/cards/BlogCard";
@@ -8,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = { title: "Trending Articles", description: "Discover trending published articles on VexiraHub." };
 
 export default async function TrendingPage() {
-  let posts = [];
+  let posts: Post[] = [];
   try { posts = (await getTrendingPosts(1, 50)).items; }
   catch (error) { console.error("[TRENDING_PAGE] Unable to load posts:", error); }
   return (
